@@ -27,7 +27,7 @@ namespace RPGConsole
 
                 if (seleção == "2")
                 {
-                    Console.WriteLine("Este jogo foi desenvolvido para aprender sobre c#, de uma forma não maçante, encorajo todos que querem aprender a programar a criar um jogo seu...");
+                    Console.WriteLine("Este jogo foi desenvolvido para aprender sobre c#, de uma forma não maçante, encorajo todos que querem aprender a programar a criar um jogo seu.");
                     Console.WriteLine("Aperte alguma tecla para voltar para o menu");
                     Console.ReadKey();
                     seleção = "0";
