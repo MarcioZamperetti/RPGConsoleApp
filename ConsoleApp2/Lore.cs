@@ -23,6 +23,7 @@ namespace RPGConsole
                 Console.WriteLine("");
                 Console.WriteLine("Digite 1 para iniciar o jogo");
                 Console.WriteLine("Digite 2 para ir para o sobre");
+                Console.WriteLine("Digite 3 para testar o sistema de batalha");
                 seleção = Console.ReadLine();
 
                 if (seleção == "2")
@@ -32,9 +33,16 @@ namespace RPGConsole
                     Console.ReadKey();
                     seleção = "0";
                 }
-                else
+                if (seleção == "3")
                 {
-                    Console.WriteLine("Bom Jogo...");
+                    Personagem jogador1 = new Personagem();
+                    jogador1.CriarPersonagem(jogador1);
+                    jogador1.nomeinimigo = "ratinho";
+                    jogador1.vidainimigo = 5;
+                    jogador1.ataquainimigo = 1;
+                    Console.WriteLine("Voce viu um " + jogador1.nomeinimigo + " Voce deseja atacalo? 1-Atacar ou 2-Correr 3-Auto-Ataque");
+                    jogador1.resposta = Console.ReadLine();
+                    jogador1.Batalhar();
                 }
             }
         }
