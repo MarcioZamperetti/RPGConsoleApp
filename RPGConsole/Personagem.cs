@@ -22,6 +22,7 @@ namespace RPGConsole
         public string nomeinimigo;
         public string fimdebatalha;
         public int xp;
+        public int xpProxNivel = 100;
         public int xpGanho;
         public int nivel;
        
@@ -64,7 +65,7 @@ namespace RPGConsole
             Random rdn = new Random();
             int dano = rdn.Next(0, inteligencia);
         }
-        public void Batalhar()
+        public void Batalhar(Personagem jogador1)
         {
             fimdebatalha = "não";
             while (fimdebatalha == "não")
@@ -90,6 +91,7 @@ namespace RPGConsole
                     Console.WriteLine("XP ganho: " + xpGanho);
                     xp = xp + xpGanho;
                     Console.WriteLine("XP Total: " + xp);
+                    calculoNivel(jogador1);
 
                 }
                 while (resposta == "1")
@@ -113,6 +115,7 @@ namespace RPGConsole
                     Console.WriteLine("XP ganho: " + xpGanho);
                     xp = xp + xpGanho;
                     Console.WriteLine("XP Total: " + xp);
+                    calculoNivel(jogador1);
                 }
                 while (resposta == "2")
                 {
@@ -222,6 +225,24 @@ namespace RPGConsole
             Console.WriteLine("Inteligencia: " + jogador1.inteligencia);
             Console.WriteLine("Vida: " + jogador1.vida);
             Console.ForegroundColor = ConsoleColor.White;
+        }
+        public void calculoNivel(Personagem jogador1)
+        {
+            if (xp >= xpProxNivel)
+            {
+                nivel = nivel + 1;
+                xpProxNivel = xpProxNivel * 2;
+                jogador1.nivel = nivel;
+                jogador1.vida = vida + vida;
+                jogador1.força = força + força;
+                jogador1.inteligencia = inteligencia + inteligencia;
+                Console.WriteLine("Você subio de Nivel: " + nivel);
+                Console.WriteLine("Atributos:");
+                Console.WriteLine("Força: " + jogador1.força);
+                Console.WriteLine("Inteligencia: " + jogador1.inteligencia);
+                Console.WriteLine("Vida: " + jogador1.vida);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
     }
 }

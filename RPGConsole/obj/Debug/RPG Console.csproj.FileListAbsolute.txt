@@ -11,3 +11,10 @@ C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\obj\Debug\RPG
 C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\obj\Debug\RPG Console.csproj.CoreCompileInputs.cache
 C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\obj\Debug\RPG Console.exe
 C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\obj\Debug\RPG Console.pdb
+C:\Users\Marcio\source\repos\RPG Console\RPGConsoleApp\RPGConsole\bin\Debug\RPG Console.exe.config
+C:\Users\Marcio\source\repos\RPG Console\RPGConsoleApp\RPGConsole\bin\Debug\RPG Console.exe
+C:\Users\Marcio\source\repos\RPG Console\RPGConsoleApp\RPGConsole\bin\Debug\RPG Console.pdb
+C:\Users\Marcio\source\repos\RPG Console\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.csprojResolveAssemblyReference.cache
+C:\Users\Marcio\source\repos\RPG Console\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.csproj.CoreCompileInputs.cache
+C:\Users\Marcio\source\repos\RPG Console\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.exe
+C:\Users\Marcio\source\repos\RPG Console\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.pdb

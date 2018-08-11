@@ -45,7 +45,7 @@ namespace RPGConsole
                         jogador1.xpGanho = 50;
                         Console.WriteLine("Voce viu um " + jogador1.nomeinimigo + " Voce deseja atacalo? 1-Atacar ou 2-Correr 3-Auto-Ataque");
                         jogador1.resposta = Console.ReadLine();
-                        jogador1.Batalhar();
+                        jogador1.Batalhar(jogador1);
                     }
 
                 }
