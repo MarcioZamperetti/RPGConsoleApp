@@ -1,0 +1,6 @@
+C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\bin\Release\RPG Console.exe.config
+C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\bin\Release\RPG Console.exe
+C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\bin\Release\RPG Console.pdb
+C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\obj\Release\RPG Console.csproj.CoreCompileInputs.cache
+C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\obj\Release\RPG Console.exe
+C:\Users\Marcio\source\repos\ConsoleApp2\RPGConsoleApp\ConsoleApp2\obj\Release\RPG Console.pdb

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG Console", "ConsoleApp2\RPG Console.csproj", "{067E4C30-0A25-46C2-912F-CB6EB33F6289}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPG Console", "RPGConsole\RPG Console.csproj", "{067E4C30-0A25-46C2-912F-CB6EB33F6289}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {13C99437-9D2C-41BB-BAFD-66E094EA1A69}
+		SolutionGuid = {BA57530C-F048-4652-A169-D0C9707002F1}
 	EndGlobalSection
 EndGlobal
