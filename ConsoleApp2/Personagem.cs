@@ -21,6 +21,10 @@ namespace RPGConsole
         public string resposta;
         public string nomeinimigo;
         public string fimdebatalha;
+        public int xp;
+        public int xpGanho;
+        public int nivel;
+       
 
         public void Atacar()
         {
@@ -83,6 +87,9 @@ namespace RPGConsole
                     fimdebatalha = "sim";
                     resposta = "matou";
                     Console.WriteLine("Você Matou o inimigo");
+                    Console.WriteLine("XP ganho: " + xpGanho);
+                    xp = xp + xpGanho;
+                    Console.WriteLine("XP Total: " + xp);
 
                 }
                 while (resposta == "1")
@@ -103,6 +110,9 @@ namespace RPGConsole
                     fimdebatalha = "sim";
                     resposta = "matou";
                     Console.WriteLine("Você Matou o Inimigo");
+                    Console.WriteLine("XP ganho: " + xpGanho);
+                    xp = xp + xpGanho;
+                    Console.WriteLine("XP Total: " + xp);
                 }
                 while (resposta == "2")
                 {
@@ -131,13 +141,11 @@ namespace RPGConsole
             {
 
                 Console.WriteLine("Boa");
-                Console.ReadKey();
             }
             if (resposta == "correu")
             {
 
                 Console.WriteLine("Boa");
-                Console.ReadKey();
             }
             Console.ReadKey();
         }
@@ -172,6 +180,8 @@ namespace RPGConsole
                         jogador1.força = 3;
                         jogador1.inteligencia = 2;
                         jogador1.vida = 15;
+                        jogador1.nivel = 1;
+                        jogador1.xp = 0;
                         Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
                         resposta = Console.ReadLine();
                         break;
@@ -182,6 +192,8 @@ namespace RPGConsole
                         jogador1.força = 2;
                         jogador1.inteligencia = 4;
                         jogador1.vida = 10;
+                        jogador1.nivel = 1;
+                        jogador1.xp = 0;
                         Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
                         resposta = Console.ReadLine();
                         break;
@@ -191,6 +203,8 @@ namespace RPGConsole
                         jogador1.força = 5;
                         jogador1.inteligencia = 1;
                         jogador1.vida = 20;
+                        jogador1.nivel = 1;
+                        jogador1.xp = 0;
                         Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
                         resposta = Console.ReadLine();
                         break;
