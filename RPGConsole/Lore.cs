@@ -49,6 +49,14 @@ namespace RPGConsole
                     }
 
                 }
+                if (seleção == "4")
+                {
+                    Personagem jogador1 = new Personagem();
+                    jogador1.gold = 5;
+                    int valor = 123;
+                    string nome = "adaga";
+                    jogador1.ComprarItem(jogador1, valor, nome);
+                }
             }
         }
         public void parte1(string nome)

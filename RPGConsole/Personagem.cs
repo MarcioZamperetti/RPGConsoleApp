@@ -25,7 +25,9 @@ namespace RPGConsole
         public int xpProxNivel = 100;
         public int xpGanho;
         public int nivel;
-       
+        public int gold;
+        public int silver;
+
 
         public void Atacar()
         {
@@ -91,7 +93,7 @@ namespace RPGConsole
                     Console.WriteLine("XP ganho: " + xpGanho);
                     xp = xp + xpGanho;
                     Console.WriteLine("XP Total: " + xp);
-                    calculoNivel(jogador1);
+                    CalcularNivel(jogador1);
 
                 }
                 while (resposta == "1")
@@ -115,7 +117,7 @@ namespace RPGConsole
                     Console.WriteLine("XP ganho: " + xpGanho);
                     xp = xp + xpGanho;
                     Console.WriteLine("XP Total: " + xp);
-                    calculoNivel(jogador1);
+                    CalcularNivel(jogador1);
                 }
                 while (resposta == "2")
                 {
@@ -125,7 +127,6 @@ namespace RPGConsole
                     {
                         Console.WriteLine("Voce correu do inimigo");
                         resposta = "correu";
-
                     }
 
                     else
@@ -135,26 +136,23 @@ namespace RPGConsole
                         Console.WriteLine("1-Atacar 2-Correr 3-Auto Ataque");
                         resposta = Console.ReadLine();
                         fimdebatalha = "não";
-
                     }
 
                 }
             }
             if (resposta == "matou")
             {
-
                 Console.WriteLine("Boa");
             }
             if (resposta == "correu")
             {
-
                 Console.WriteLine("Boa");
             }
             Console.ReadKey();
         }
         public void CriarPersonagem(Personagem jogador1)
         {
-            resposta = "não"; 
+            resposta = "não";
             while (resposta == "não")
             {
                 Console.ForegroundColor = ConsoleColor.White;
@@ -226,7 +224,7 @@ namespace RPGConsole
             Console.WriteLine("Vida: " + jogador1.vida);
             Console.ForegroundColor = ConsoleColor.White;
         }
-        public void calculoNivel(Personagem jogador1)
+        public void CalcularNivel(Personagem jogador1)
         {
             if (xp >= xpProxNivel)
             {
@@ -243,6 +241,36 @@ namespace RPGConsole
                 Console.WriteLine("Vida: " + jogador1.vida);
                 Console.ForegroundColor = ConsoleColor.White;
             }
+        }
+        public void ComprarItem(Personagem jogador1, int valorDoItem, string ItemComprado)
+        {
+            double totalSilver = (gold * 100) + silver;
+            if (valorDoItem > totalSilver)
+            {
+                Console.WriteLine("Você não possui dinheiro necessario");
+            }
+            if(valorDoItem <= totalSilver)
+            {
+                totalSilver = totalSilver - valorDoItem;
+                Console.WriteLine("Você comprou um " + ItemComprado + " por: " + valorDoItem + " silvers ");
+                if (totalSilver > 100)
+                {
+                    totalSilver = totalSilver / 100;
+                    gold = Convert.ToInt32(Math.Floor(totalSilver));
+                    totalSilver = totalSilver - gold;
+                    totalSilver = totalSilver * 100;
+                    silver = Convert.ToInt32(totalSilver);
+                    Console.WriteLine("Troco Gold: " + gold + " Silver: " + silver);
+
+                }
+                else
+                {
+                    silver = Convert.ToInt32(totalSilver);
+                    Console.WriteLine("Silver: " + silver);
+                }
+           
+            }
+
         }
     }
 }
