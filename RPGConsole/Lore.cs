@@ -24,6 +24,7 @@ namespace RPGConsole
                 Console.WriteLine("Digite 1 para iniciar o jogo");
                 Console.WriteLine("Digite 2 para ir para o sobre");
                 Console.WriteLine("Digite 3 para testar o sistema de batalha");
+                Console.WriteLine("Digite 4 para testar o sistema de comprade item");
                 seleção = Console.ReadLine();
 
                 if (seleção == "2")
@@ -52,9 +53,14 @@ namespace RPGConsole
                 if (seleção == "4")
                 {
                     Personagem jogador1 = new Personagem();
-                    jogador1.gold = 5;
-                    int valor = 123;
-                    string nome = "adaga";
+                    Console.WriteLine("Total de gold do personagem:");
+                    jogador1.gold = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Total de silver do personagem:");
+                    jogador1.silver = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Nome do item a ser comprado:");
+                    string nome = Console.ReadLine();
+                    Console.WriteLine("Valor do item a ser comprado em silver:");
+                    int valor = Convert.ToInt32(Console.ReadLine());
                     jogador1.ComprarItem(jogador1, valor, nome);
                 }
             }

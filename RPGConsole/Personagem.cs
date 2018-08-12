@@ -260,7 +260,7 @@ namespace RPGConsole
                     totalSilver = totalSilver - gold;
                     totalSilver = totalSilver * 100;
                     silver = Convert.ToInt32(totalSilver);
-                    Console.WriteLine("Troco Gold: " + gold + " Silver: " + silver);
+                    Console.WriteLine("Seu troco Gold: " + gold + " Silver: " + silver);
 
                 }
                 else
