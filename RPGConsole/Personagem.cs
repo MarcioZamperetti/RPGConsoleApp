@@ -27,6 +27,7 @@ namespace RPGConsole
         public int nivel;
         public int gold;
         public int silver;
+        List<string> bag = new List<string>();
 
 
         public void Atacar()
@@ -261,16 +262,40 @@ namespace RPGConsole
                     totalSilver = totalSilver * 100;
                     silver = Convert.ToInt32(totalSilver);
                     Console.WriteLine("Seu troco Gold: " + gold + " Silver: " + silver);
+                    AdicionarItemNaBag(jogador1, ItemComprado);
 
                 }
                 else
                 {
                     silver = Convert.ToInt32(totalSilver);
-                    Console.WriteLine("Silver: " + silver);
-                }
-           
+                    Console.WriteLine("Seu troco silver: " + silver);
+                }           
             }
-
+        }
+        public void OlharBag(Personagem jogador1)
+        {
+            bag.ForEach(i => Console.WriteLine(i));
+        }
+        public void AdicionarItemNaBag(Personagem jogador1, string item)
+        {
+            bag.Add(item);
+            Console.WriteLine("O item " + item + "foi adicionado a sua bag");
+        }
+        public void RemoverItemNaBag(Personagem jogador1, string itemRemovido)
+        {
+            bool ItemExistente = false;
+            foreach (string nomeItem in bag)
+            {
+                if (nomeItem == itemRemovido)
+                    ItemExistente = true;
+            }
+            if (ItemExistente)
+            {
+                bag.Remove(itemRemovido);
+                Console.WriteLine("O item " + itemRemovido + " foi removido da sua bag");
+            }
+            if (!ItemExistente)
+                Console.WriteLine("Voce não possui nenhum item com esse nome");
         }
     }
 }
