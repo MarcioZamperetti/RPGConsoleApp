@@ -15,9 +15,10 @@ namespace RPGConsole
         public string classe;
         public int força;
         public int inteligencia;
-        public int vida;
+        public int vidaAtual;
         public int vidainimigo;
         public int ataquainimigo;
+        public int vidaTotal;
         public string resposta;
         public string nomeinimigo;
         public string fimdebatalha;
@@ -48,9 +49,9 @@ namespace RPGConsole
                 int dano = rdn.Next(0, ataquainimigo);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("O Inimigo Causou: " + dano);
-                vida = vida - dano;
+                vidaAtual = vidaAtual - dano;
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Sua Vida: " + vida);
+                Console.WriteLine("Sua Vida: " + vidaAtual);
             }
         }
         public void AutoAtacar()
@@ -79,7 +80,7 @@ namespace RPGConsole
                     {
                         AutoAtacar();
                         Atacarinimigo();
-                        if (vida <= 0)
+                        if (vidaAtual <= 0)
                         {
                             Console.WriteLine("Voce morreu");
                             Thread.Sleep(1500);
@@ -103,7 +104,7 @@ namespace RPGConsole
                     {
                         Atacar();
                         Atacarinimigo();
-                        if (vida <= 0)
+                        if (vidaAtual <= 0)
                         {
                             Console.WriteLine("Voce morreu");
                             Thread.Sleep(1500);
@@ -181,7 +182,8 @@ namespace RPGConsole
                         Console.WriteLine("Confirme seus dados, NOME: " + jogador1.nome + " Idade: " + jogador1.idade + " CLasse " + jogador1.classe);
                         jogador1.força = 3;
                         jogador1.inteligencia = 2;
-                        jogador1.vida = 15;
+                        jogador1.vidaAtual = 15;
+                        jogador1.vidaTotal = 15;
                         jogador1.nivel = 1;
                         jogador1.xp = 0;
                         Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
@@ -193,7 +195,8 @@ namespace RPGConsole
                         Console.WriteLine("Confirme seus dados, NOME: " + jogador1.nome + " Idade: " + jogador1.idade + " CLasse " + jogador1.classe);
                         jogador1.força = 2;
                         jogador1.inteligencia = 4;
-                        jogador1.vida = 10;
+                        jogador1.vidaAtual = 10;
+                        jogador1.vidaTotal = 10;
                         jogador1.nivel = 1;
                         jogador1.xp = 0;
                         Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
@@ -204,7 +207,8 @@ namespace RPGConsole
                         Console.WriteLine("Confirme seus dados, NOME: " + jogador1.nome + " Idade: " + jogador1.idade + " CLasse " + jogador1.classe);
                         jogador1.força = 5;
                         jogador1.inteligencia = 1;
-                        jogador1.vida = 20;
+                        jogador1.vidaAtual = 20;
+                        jogador1.vidaTotal = 20;
                         jogador1.nivel = 1;
                         jogador1.xp = 0;
                         Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
@@ -222,7 +226,7 @@ namespace RPGConsole
             Console.WriteLine("Atributos:");
             Console.WriteLine("Força: " + jogador1.força);
             Console.WriteLine("Inteligencia: " + jogador1.inteligencia);
-            Console.WriteLine("Vida: " + jogador1.vida);
+            Console.WriteLine("Vida: " + jogador1.vidaTotal);
             Console.ForegroundColor = ConsoleColor.White;
         }
         public void CalcularNivel(Personagem jogador1)
@@ -232,14 +236,15 @@ namespace RPGConsole
                 nivel = nivel + 1;
                 xpProxNivel = xpProxNivel * 2;
                 jogador1.nivel = nivel;
-                jogador1.vida = vida + vida;
+                jogador1.vidaTotal = vidaTotal + vidaTotal;
+                jogador1.vidaAtual = jogador1.vidaTotal;
                 jogador1.força = força + força;
                 jogador1.inteligencia = inteligencia + inteligencia;
                 Console.WriteLine("Você subio de Nivel: " + nivel);
                 Console.WriteLine("Atributos:");
                 Console.WriteLine("Força: " + jogador1.força);
                 Console.WriteLine("Inteligencia: " + jogador1.inteligencia);
-                Console.WriteLine("Vida: " + jogador1.vida);
+                Console.WriteLine("Vida: " + jogador1.vidaAtual);
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
@@ -250,7 +255,7 @@ namespace RPGConsole
             {
                 Console.WriteLine("Você não possui dinheiro necessario");
             }
-            if(valorDoItem <= totalSilver)
+            if (valorDoItem <= totalSilver)
             {
                 totalSilver = totalSilver - valorDoItem;
                 Console.WriteLine("Você comprou um " + ItemComprado + " por: " + valorDoItem + " silvers ");
@@ -269,7 +274,7 @@ namespace RPGConsole
                 {
                     silver = Convert.ToInt32(totalSilver);
                     Console.WriteLine("Seu troco silver: " + silver);
-                }           
+                }
             }
         }
         public void OlharBag(Personagem jogador1)
@@ -299,6 +304,40 @@ namespace RPGConsole
             }
             if (!ItemExistente)
                 Console.WriteLine("Voce não possui nenhum item com esse nome");
+        }
+        public void BeberPocao(Personagem jogador1, string tipoPocao)
+        {
+            double recuperacao = 0;
+            switch (tipoPocao)
+            {
+                case "pocão pequena":
+                    recuperacao = vidaTotal * 0.25;// 25% da vida total
+                    if (recuperacao + vidaAtual >= vidaTotal)
+                    {
+                        jogador1.vidaAtual = vidaTotal;
+                    }
+                    else
+                        jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
+                    break;
+                case "pocão media":
+                    recuperacao = vidaTotal * 0.50;// 50% da vida total
+                    if (recuperacao + vidaAtual >= vidaTotal)
+                    {
+                        jogador1.vidaAtual = vidaTotal;
+                    }
+                    else
+                        jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
+                    break;
+                case "pocão grande":
+                    recuperacao = vidaTotal;// toda vida
+                    jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
+                    break;
+
+
+
+
+
+            }
         }
     }
 }
