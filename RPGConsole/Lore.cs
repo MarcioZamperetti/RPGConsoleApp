@@ -25,6 +25,7 @@ namespace RPGConsole
                 Console.WriteLine("Digite 2 para ir para o sobre");
                 Console.WriteLine("Digite 3 para testar o sistema de batalha");
                 Console.WriteLine("Digite 4 para testar o sistema de comprade item");
+                Console.WriteLine("Digite 5 para os comandos basicos");
                 seleção = Console.ReadLine();
 
                 if (seleção == "2")
@@ -62,6 +63,26 @@ namespace RPGConsole
                     Console.WriteLine("Valor do item a ser comprado em silver:");
                     int valor = Convert.ToInt32(Console.ReadLine());
                     jogador1.ComprarItem(jogador1, valor, nome);
+                }
+                if (seleção == "5")//Lista de comandos basicos
+                {
+                    Console.WriteLine("Lista de comandos basicos:");
+                    Console.WriteLine("olhar bag");
+                    Console.WriteLine("remover item");
+                    seleção = Console.ReadLine();
+                }
+                if (seleção == "olhar bag")
+                {
+                    Personagem jogador1 = new Personagem();
+                    jogador1.OlharBag(jogador1);
+
+                }
+                if (seleção == "remover item")
+                {
+                    Console.WriteLine("Qual item você gostaria de remover da sua bag?");
+                    string nomeItem = Console.ReadLine();
+                    Personagem jogador1 = new Personagem();
+                    jogador1.RemoverItemNaBag(jogador1, nomeItem);
                 }
             }
         }

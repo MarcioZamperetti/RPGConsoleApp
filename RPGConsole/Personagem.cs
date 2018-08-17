@@ -63,7 +63,7 @@ namespace RPGConsole
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Vida do Inimigo: " + vidainimigo);
         }
-        public void Atacarm()
+        public void AtacarMagia()
         {
             Random rdn = new Random();
             int dano = rdn.Next(0, inteligencia);
@@ -274,12 +274,15 @@ namespace RPGConsole
         }
         public void OlharBag(Personagem jogador1)
         {
-            bag.ForEach(i => Console.WriteLine(i));
+            if (bag.Count == 0)
+                Console.WriteLine("Não há itens na sua bag");
+            else
+                bag.ForEach(i => Console.WriteLine(i));
         }
-        public void AdicionarItemNaBag(Personagem jogador1, string item)
+        public void AdicionarItemNaBag(Personagem jogador1, string itemAdicionado)
         {
-            bag.Add(item);
-            Console.WriteLine("O item " + item + "foi adicionado a sua bag");
+            bag.Add(itemAdicionado);
+            Console.WriteLine("O item " + itemAdicionado + "foi adicionado a sua bag");
         }
         public void RemoverItemNaBag(Personagem jogador1, string itemRemovido)
         {
