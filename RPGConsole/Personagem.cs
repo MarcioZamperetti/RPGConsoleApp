@@ -317,30 +317,43 @@ namespace RPGConsole
         }
         public void BeberPocao(Personagem jogador1, string tipoPocao)
         {
-            double recuperacao = 0;
-            switch (tipoPocao)
+            bool temPocao = false;
+            foreach (string nomeItem in bag)
             {
-                case "pocão pequena":
-                    recuperacao = vidaTotal * 0.25;// 25% da vida total
-                    if (recuperacao + vidaAtual >= vidaTotal)
-                        jogador1.vidaAtual = vidaTotal;
-                    else
-                        jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
-                    break;
-
-                case "pocão media":
-                    recuperacao = vidaTotal * 0.50;// 50% da vida total
-                    if (recuperacao + vidaAtual >= vidaTotal)
-                        jogador1.vidaAtual = vidaTotal;
-                    else
-                        jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
-                    break;
-
-                case "pocão grande":
-                    recuperacao = vidaTotal;// toda vida
-                    jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
-                    break;
+                if (nomeItem == tipoPocao)
+                    temPocao = true;
             }
+            if (temPocao)
+            {
+                double recuperacao = 0;
+                switch (tipoPocao)
+                {
+                    case "pocão pequena":
+                        recuperacao = vidaTotal * 0.25;// 25% da vida total
+                        if (recuperacao + vidaAtual >= vidaTotal)
+                            jogador1.vidaAtual = vidaTotal;
+                        else
+                            jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
+                        break;
+
+                    case "pocão media":
+                        recuperacao = vidaTotal * 0.50;// 50% da vida total
+                        if (recuperacao + vidaAtual >= vidaTotal)
+                            jogador1.vidaAtual = vidaTotal;
+                        else
+                            jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
+                        break;
+
+                    case "pocão grande":
+                        recuperacao = vidaTotal;// toda vida
+                        jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
+                        break;
+                }
+                bag.Remove(tipoPocao);
+                Console.WriteLine("Você bebeu a " + tipoPocao);
+            }
+            if (!temPocao)
+                Console.WriteLine("Você não possui esse tipo de poção");           
         }
     }
 }
