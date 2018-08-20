@@ -8,8 +8,10 @@ namespace RPGConsole
 {
     public class Inimigos
     {
-        public string nome;
-        public int força;
-        public int vida;
+        public string nome { get; set; }
+        public int força { get; set; }
+        public int vida { get; set; }
+        public int xpGanho { get; set; }
+
     }
 }

@@ -24,29 +24,28 @@ namespace RPGConsole
         public string fimdebatalha;
         public int xp;
         public int xpProxNivel = 100;
-        public int xpGanho;
         public int nivel;
         public int gold;
         public int silver;
         List<string> bag = new List<string>();
 
 
-        public void Atacar()
+        public void Atacar(Inimigos inimigo)
         {
             Random rdn = new Random();
             int dano = rdn.Next(0, força);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("1Seu dano foi: " + dano);
-            vidainimigo = vidainimigo - dano;
+            inimigo.vida = inimigo.vida - dano;
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("1Vida do Inimigo: " + vidainimigo);
+            Console.WriteLine("1Vida do Inimigo: " + inimigo.vida);
             Console.ReadKey();
         }
-        public void Atacarinimigo()
+        public void Atacarinimigo(Inimigos inimigo)
         {
             {
                 Random rdn = new Random();
-                int dano = rdn.Next(0, ataquainimigo);
+                int dano = rdn.Next(0, inimigo.força);
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("O Inimigo Causou: " + dano);
                 vidaAtual = vidaAtual - dano;
@@ -54,32 +53,32 @@ namespace RPGConsole
                 Console.WriteLine("Sua Vida: " + vidaAtual);
             }
         }
-        public void AutoAtacar()
+        public void AutoAtacar(Inimigos inimigo)
         {
             Random rdn = new Random();
             int dano = rdn.Next(0, força);
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Seu dano foi: " + dano);
-            vidainimigo = vidainimigo - dano;
+            inimigo.vida = inimigo.vida - dano;
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Vida do Inimigo: " + vidainimigo);
+            Console.WriteLine("Vida do Inimigo: " + inimigo.vida);
         }
         public void AtacarMagia()
         {
             Random rdn = new Random();
             int dano = rdn.Next(0, inteligencia);
         }
-        public void Batalhar(Personagem jogador1)
+        public void Batalhar(Personagem jogador1, Inimigos inimigo)
         {
             fimdebatalha = "não";
             while (fimdebatalha == "não")
             {
                 while (resposta == "3")
                 {
-                    while (vidainimigo >= 1)
+                    while (inimigo.vida >= 1)
                     {
-                        AutoAtacar();
-                        Atacarinimigo();
+                        AutoAtacar(inimigo);
+                        Atacarinimigo(inimigo);
                         if (vidaAtual <= 0)
                         {
                             Console.WriteLine("Voce morreu");
@@ -92,18 +91,18 @@ namespace RPGConsole
                     fimdebatalha = "sim";
                     resposta = "matou";
                     Console.WriteLine("Você Matou o inimigo");
-                    Console.WriteLine("XP ganho: " + xpGanho);
-                    xp = xp + xpGanho;
+                    Console.WriteLine("XP ganho: " + inimigo.xpGanho);
+                    xp = xp + inimigo.xpGanho;
                     Console.WriteLine("XP Total: " + xp);
                     CalcularNivel(jogador1);
 
                 }
                 while (resposta == "1")
                 {
-                    while (vidainimigo >= 1)
+                    while (inimigo.vida >= 1)
                     {
-                        Atacar();
-                        Atacarinimigo();
+                        Atacar(inimigo);
+                        Atacarinimigo(inimigo);
                         if (vidaAtual <= 0)
                         {
                             Console.WriteLine("Voce morreu");
@@ -116,8 +115,8 @@ namespace RPGConsole
                     fimdebatalha = "sim";
                     resposta = "matou";
                     Console.WriteLine("Você Matou o Inimigo");
-                    Console.WriteLine("XP ganho: " + xpGanho);
-                    xp = xp + xpGanho;
+                    Console.WriteLine("XP ganho: " + inimigo.xpGanho);
+                    xp = xp + inimigo.xpGanho;
                     Console.WriteLine("XP Total: " + xp);
                     CalcularNivel(jogador1);
                 }
@@ -134,7 +133,7 @@ namespace RPGConsole
                     else
                     {
                         Console.WriteLine("Voce falhou em correr do inimigo");
-                        Atacarinimigo();
+                        Atacarinimigo(inimigo);
                         Console.WriteLine("1-Atacar 2-Correr 3-Auto Ataque");
                         resposta = Console.ReadLine();
                         fimdebatalha = "não";
@@ -313,30 +312,23 @@ namespace RPGConsole
                 case "pocão pequena":
                     recuperacao = vidaTotal * 0.25;// 25% da vida total
                     if (recuperacao + vidaAtual >= vidaTotal)
-                    {
                         jogador1.vidaAtual = vidaTotal;
-                    }
                     else
                         jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
                     break;
+
                 case "pocão media":
                     recuperacao = vidaTotal * 0.50;// 50% da vida total
                     if (recuperacao + vidaAtual >= vidaTotal)
-                    {
                         jogador1.vidaAtual = vidaTotal;
-                    }
                     else
                         jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
                     break;
+
                 case "pocão grande":
                     recuperacao = vidaTotal;// toda vida
                     jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
                     break;
-
-
-
-
-
             }
         }
     }

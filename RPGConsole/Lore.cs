@@ -41,13 +41,14 @@ namespace RPGConsole
                     jogador1.CriarPersonagem(jogador1);
                     while (seleção == "3")
                     {
-                        jogador1.nomeinimigo = "ratinho";
-                        jogador1.vidainimigo = 5;
-                        jogador1.ataquainimigo = 1;
-                        jogador1.xpGanho = 50;
-                        Console.WriteLine("Voce viu um " + jogador1.nomeinimigo + " Voce deseja atacalo? 1-Atacar ou 2-Correr 3-Auto-Ataque");
+                        Inimigos inimigo = new Inimigos();
+                        inimigo.nome = "ratinho";
+                        inimigo.vida = 5;
+                        inimigo.força = 1;
+                        inimigo.xpGanho = 50;
+                        Console.WriteLine("Voce viu um " + inimigo.nome + " Voce deseja atacalo? 1-Atacar ou 2-Correr 3-Auto-Ataque");
                         jogador1.resposta = Console.ReadLine();
-                        jogador1.Batalhar(jogador1);
+                        jogador1.Batalhar(jogador1, inimigo);
                     }
 
                 }
@@ -69,6 +70,7 @@ namespace RPGConsole
                     Console.WriteLine("Lista de comandos basicos:");
                     Console.WriteLine("olhar bag");
                     Console.WriteLine("remover item");
+                    Console.WriteLine("beber pocão");
                     seleção = Console.ReadLine();
                 }
                 if (seleção == "olhar bag")
