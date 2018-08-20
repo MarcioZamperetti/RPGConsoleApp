@@ -29,14 +29,6 @@ namespace RPGConsole
 
 
             //LIXO//
-           /* Inimigos Inimigo = new Inimigos();
-            jogador1.nomeinimigo = Inimigo.nome = "ratinho";
-            jogador1.vidainimigo = Inimigo.força = 2;
-            jogador1.vidainimigo = Inimigo.vida = 5;
-
-            Console.WriteLine("Voce viu um " + jogador1.nomeinimigo + " Voce deseja atacalo? 1-Atacar ou 2-Correr 3-Auto-Ataque");
-            jogador1.resposta = Console.ReadLine();
-            jogador1.Batalhar(jogador1, inimigo);*/
   
             Console.WriteLine("Voltou pro game");
 
