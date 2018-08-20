@@ -25,7 +25,7 @@ namespace RPGConsole
                 Console.WriteLine("Digite 2 para ir para o sobre");
                 Console.WriteLine("Digite 3 para testar o sistema de batalha");
                 Console.WriteLine("Digite 4 para testar o sistema de comprade item");
-                Console.WriteLine("Digite 5 para os comandos basicos");
+                Console.WriteLine("Digite 5 para ver os comandos basicos");
                 seleção = Console.ReadLine();
 
                 if (seleção == "2")
@@ -46,7 +46,7 @@ namespace RPGConsole
                         inimigo.vida = 5;
                         inimigo.força = 1;
                         inimigo.xpGanho = 50;
-                        Console.WriteLine("Voce viu um " + inimigo.nome + " Voce deseja atacalo? 1-Atacar ou 2-Correr 3-Auto-Ataque");
+                        Console.WriteLine("Voce viu um " + inimigo.nome + " Voce deseja? 1-Atacar ou 2-Correr 3-Auto-Ataque");
                         jogador1.resposta = Console.ReadLine();
                         jogador1.Batalhar(jogador1, inimigo);
                     }
@@ -71,6 +71,7 @@ namespace RPGConsole
                     Console.WriteLine("olhar bag");
                     Console.WriteLine("remover item");
                     Console.WriteLine("beber pocão");
+                    Console.WriteLine("Digite algum comando para testar sua ação:");
                     seleção = Console.ReadLine();
                 }
                 if (seleção == "olhar bag")
@@ -85,6 +86,19 @@ namespace RPGConsole
                     string nomeItem = Console.ReadLine();
                     Personagem jogador1 = new Personagem();
                     jogador1.RemoverItemNaBag(jogador1, nomeItem);
+                }
+                if (seleção == "beber poção")
+                {
+                    string nomePoçao = "poção pequena";
+                    Personagem jogador1 = new Personagem();
+                    jogador1.AdicionarItemNaBag(jogador1, nomePoçao);
+                    Console.WriteLine("primeiro didgite 'olhar bag' para ver os seus itens na bag");
+                    Console.ReadLine();
+                    jogador1.OlharBag(jogador1);
+                    Console.WriteLine("Qual poção você gostaria de beber?");
+                    nomePoçao = Console.ReadLine();
+                    jogador1.BeberPocao(jogador1, nomePoçao);
+
                 }
             }
         }
