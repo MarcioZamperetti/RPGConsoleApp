@@ -33,7 +33,15 @@ namespace RPGConsole
         public void Atacar(Inimigos inimigo)
         {
             Random rdn = new Random();
-            int dano = rdn.Next(0, força);
+            int dano;
+            if (classe == "Mago")
+            {
+                dano = rdn.Next(0, inteligencia);
+            }
+            else
+            {
+                dano = rdn.Next(0, força);
+            }
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("1Seu dano foi: " + dano);
             inimigo.vida = inimigo.vida - dano;
@@ -56,17 +64,20 @@ namespace RPGConsole
         public void AutoAtacar(Inimigos inimigo)
         {
             Random rdn = new Random();
-            int dano = rdn.Next(0, força);
+            int dano;
+            if (classe == "Mago")
+            {
+                dano = rdn.Next(0, inteligencia);
+            }
+            else
+            {
+                dano = rdn.Next(0, força);
+            }
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Seu dano foi: " + dano);
             inimigo.vida = inimigo.vida - dano;
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Vida do Inimigo: " + inimigo.vida);
-        }
-        public void AtacarMagia()
-        {
-            Random rdn = new Random();
-            int dano = rdn.Next(0, inteligencia);
         }
         public void Batalhar(Personagem jogador1, Inimigos inimigo)
         {
