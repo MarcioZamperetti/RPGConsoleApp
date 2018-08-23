@@ -292,7 +292,10 @@ namespace RPGConsole
             if (bag.Count == 0)
                 Console.WriteLine("Não há itens na sua bag");
             else
+            {
+                Console.WriteLine("Item na sua Bag:");
                 bag.ForEach(i => Console.WriteLine(i));
+            }
         }
         public void AdicionarItemNaBag(Personagem jogador1, string itemAdicionado)
         {
@@ -315,20 +318,27 @@ namespace RPGConsole
             if (!ItemExistente)
                 Console.WriteLine("Voce não possui nenhum item com esse nome");
         }
+        public bool VeificarSeItemExisteNaBag(Personagem jogador1, string itemASerRemovido)
+        {
+            foreach (string item in bag)
+            {
+                if (itemASerRemovido == item)
+                    return true;
+            }
+            return false;
+        }
         public void BeberPocao(Personagem jogador1, string tipoPocao)
         {
-            bool temPocao = false;
-            foreach (string nomeItem in bag)
+            if (!VeificarSeItemExisteNaBag(jogador1, tipoPocao))
             {
-                if (nomeItem == tipoPocao)
-                    temPocao = true;
+                Console.WriteLine("Você não possui esse tipo de poção");
             }
-            if (temPocao)
-            {
+            else
+            { 
                 double recuperacao = 0;
                 switch (tipoPocao)
                 {
-                    case "pocão pequena":
+                    case "poção pequena":
                         recuperacao = vidaTotal * 0.25;// 25% da vida total
                         if (recuperacao + vidaAtual >= vidaTotal)
                             jogador1.vidaAtual = vidaTotal;
@@ -336,7 +346,7 @@ namespace RPGConsole
                             jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
                         break;
 
-                    case "pocão media":
+                    case "poção media":
                         recuperacao = vidaTotal * 0.50;// 50% da vida total
                         if (recuperacao + vidaAtual >= vidaTotal)
                             jogador1.vidaAtual = vidaTotal;
@@ -344,16 +354,14 @@ namespace RPGConsole
                             jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
                         break;
 
-                    case "pocão grande":
+                    case "poção grande":
                         recuperacao = vidaTotal;// toda vida
                         jogador1.vidaAtual = jogador1.vidaAtual + Convert.ToInt32(recuperacao);
                         break;
                 }
                 bag.Remove(tipoPocao);
                 Console.WriteLine("Você bebeu a " + tipoPocao);
-            }
-            if (!temPocao)
-                Console.WriteLine("Você não possui esse tipo de poção");           
+            }                  
         }
     }
 }

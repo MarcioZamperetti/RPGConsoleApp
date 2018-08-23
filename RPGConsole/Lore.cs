@@ -78,7 +78,6 @@ namespace RPGConsole
                 {
                     Personagem jogador1 = new Personagem();
                     jogador1.OlharBag(jogador1);
-
                 }
                 if (seleção == "remover item")
                 {
@@ -98,7 +97,6 @@ namespace RPGConsole
                     Console.WriteLine("Qual poção você gostaria de beber?");
                     nomePoçao = Console.ReadLine();
                     jogador1.BeberPocao(jogador1, nomePoçao);
-
                 }
             }
         }
