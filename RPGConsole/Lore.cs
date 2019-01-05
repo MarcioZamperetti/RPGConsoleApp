@@ -68,9 +68,11 @@ namespace RPGConsole
                         jogador1.silver = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Nome do item a ser comprado:");
                         string nome = Console.ReadLine();
+                        Itens item = new Itens();
+                        item.nome = nome;
                         Console.WriteLine("Valor do item a ser comprado em silver:");
                         int valor = Convert.ToInt32(Console.ReadLine());
-                        jogador1.ComprarItem(jogador1, valor, nome);
+                        jogador1.ComprarItem(jogador1, valor, item);
                     }
                     if (seleção == "5")//Lista de comandos basicos
                     {
@@ -93,21 +95,25 @@ namespace RPGConsole
                         selecaoValida = true;
                         Console.WriteLine("Qual item você gostaria de remover da sua bag?");
                         string nomeItem = Console.ReadLine();
+                        Itens novoItem = new Itens();
+                        novoItem.nome = nomeItem;
                         Personagem jogador1 = new Personagem();
-                        jogador1.RemoverItemNaBag(jogador1, nomeItem);
+                        jogador1.RemoverItemNaBag(jogador1, novoItem);
                     }
                     if (seleção == "beber poção")
                     {
                         selecaoValida = true;
                         string nomePoçao = "poção pequena";
                         Personagem jogador1 = new Personagem();
-                        jogador1.AdicionarItemNaBag(jogador1, nomePoçao);
+                        Itens novoItem = new Itens();
+                        novoItem.nome = nomePoçao;
+                        jogador1.AdicionarItemNaBag(jogador1, novoItem);
                         Console.WriteLine("primeiro didgite 'olhar bag' para ver os seus itens na bag");
                         Console.ReadLine();
                         jogador1.OlharBag(jogador1);
                         Console.WriteLine("Qual poção você gostaria de beber?");
                         nomePoçao = Console.ReadLine();
-                        jogador1.BeberPocao(jogador1, nomePoçao);
+                        jogador1.BeberPocao(jogador1, novoItem);
                     }
                     if (selecaoValida == false)
                     {

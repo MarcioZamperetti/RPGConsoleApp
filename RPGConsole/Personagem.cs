@@ -27,7 +27,7 @@ namespace RPGConsole
         public int nivel;
         public int gold;
         public int silver;
-        List<string> bag = new List<string>();
+        List<Itens> bag = new List<Itens>();
         public Itens itensEquipadoArma;
         public Itens itensEquipadoAmadura;
 
@@ -267,7 +267,7 @@ namespace RPGConsole
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
-        public void ComprarItem(Personagem jogador1, int valorDoItem, string ItemComprado)
+        public void ComprarItem(Personagem jogador1, int valorDoItem, Itens ItemComprado)
         {
             double totalSilver = (gold * 100) + silver;
             if (valorDoItem > totalSilver)
@@ -277,7 +277,7 @@ namespace RPGConsole
             if (valorDoItem <= totalSilver)
             {
                 totalSilver = totalSilver - valorDoItem;
-                Console.WriteLine("Você comprou um " + ItemComprado + " por: " + valorDoItem + " silvers ");
+                Console.WriteLine("Você comprou um " + ItemComprado.nome + " por: " + valorDoItem + " silvers ");
                 if (totalSilver > 100)
                 {
                     totalSilver = totalSilver / 100;
@@ -306,15 +306,15 @@ namespace RPGConsole
                 bag.ForEach(i => Console.WriteLine(i));
             }
         }
-        public void AdicionarItemNaBag(Personagem jogador1, string itemAdicionado)
+        public void AdicionarItemNaBag(Personagem jogador1, Itens itemAdicionado)
         {
             bag.Add(itemAdicionado);
             Console.WriteLine("O item " + itemAdicionado + "foi adicionado a sua bag");
         }
-        public void RemoverItemNaBag(Personagem jogador1, string itemRemovido)
+        public void RemoverItemNaBag(Personagem jogador1, Itens itemRemovido)
         {
             bool ItemExistente = false;
-            foreach (string nomeItem in bag)
+            foreach (var nomeItem in bag)
             {
                 if (nomeItem == itemRemovido)
                     ItemExistente = true;
@@ -327,16 +327,16 @@ namespace RPGConsole
             if (!ItemExistente)
                 Console.WriteLine("Voce não possui nenhum item com esse nome");
         }
-        public bool VeificarSeItemExisteNaBag(Personagem jogador1, string itemASerRemovido)
+        public bool VeificarSeItemExisteNaBag(Personagem jogador1, Itens itemASerRemovido)
         {
-            foreach (string item in bag)
+            foreach (var item in bag)
             {
                 if (itemASerRemovido == item)
                     return true;
             }
             return false;
         }
-        public void BeberPocao(Personagem jogador1, string tipoPocao)
+        public void BeberPocao(Personagem jogador1, Itens tipoPocao)
         {
             if (!VeificarSeItemExisteNaBag(jogador1, tipoPocao))
             {
@@ -345,7 +345,7 @@ namespace RPGConsole
             else
             { 
                 double recuperacao = 0;
-                switch (tipoPocao)
+                switch (tipoPocao.nome)
                 {
                     case "poção pequena":
                         recuperacao = vidaTotal * 0.25;// 25% da vida total
@@ -369,7 +369,7 @@ namespace RPGConsole
                         break;
                 }
                 bag.Remove(tipoPocao);
-                Console.WriteLine("Você bebeu a " + tipoPocao);
+                Console.WriteLine("Você bebeu a " + tipoPocao.nome);
             }                  
         }
     }

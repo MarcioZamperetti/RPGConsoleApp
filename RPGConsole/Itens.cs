@@ -12,5 +12,6 @@ namespace RPGConsole
         public int dano;
         public int armadura;
         public int valor;
+        public bool equipado = false;
     }
 }
