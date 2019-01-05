@@ -30,7 +30,7 @@ namespace RPGConsole
 
 
             //LIXO//
-  
+
             Console.WriteLine("Voltou pro game");
 
             Console.ReadKey();

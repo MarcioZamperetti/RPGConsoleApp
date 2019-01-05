@@ -38,5 +38,6 @@ namespace RPGConsole
 
             Console.SetWindowSize(150, 40);
         }
+
     }
 }
