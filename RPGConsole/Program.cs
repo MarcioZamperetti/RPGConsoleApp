@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace RPGConsole
 {
     class Program
     {
-        //public string resposta;
         public static void Main(string[] args)
         {
+            Configuracoes.ConfiguraJanela();
             Lore lore1;
             lore1 = new Lore();
             string resposta = "não";
