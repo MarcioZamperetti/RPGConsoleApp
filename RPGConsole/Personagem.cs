@@ -16,21 +16,20 @@ namespace RPGConsole
         public int força;
         public int inteligencia;
         public int vidaAtual;
-        public int vidainimigo;
-        public int ataquainimigo;
+       // public int vidainimigo;
+        //public int ataquainimigo;
         public int vidaTotal;
         public string resposta;
         public string nomeinimigo;
         public string fimdebatalha;
         public int xp;
-        public string armaEquipada;
-        public string armaduraEquipada;
         public int xpProxNivel = 100;
         public int nivel;
         public int gold;
         public int silver;
         List<string> bag = new List<string>();
-
+        public Itens itensEquipadoArma;
+        public Itens itensEquipadoAmadura;
 
         public void Atacar(Inimigos inimigo)
         {

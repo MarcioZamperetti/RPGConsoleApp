@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuracoes.cs" />
+    <Compile Include="Itens.cs" />
     <Compile Include="Lore.cs" />
     <Compile Include="Inimigos.cs" />
     <Compile Include="Personagem.cs" />

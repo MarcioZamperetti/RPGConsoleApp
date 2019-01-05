@@ -51,11 +51,7 @@ namespace RPGConsole
                         jogador1.CriarPersonagem(jogador1);
                         while (seleção == "3")
                         {
-                            Inimigos inimigo = new Inimigos();
-                            inimigo.nome = "ratinho";
-                            inimigo.vida = 5;
-                            inimigo.força = 1;
-                            inimigo.xpGanho = 50;
+                            Inimigos inimigo = Inimigos.CriaçãoInimigos("rato");
                             Console.WriteLine("Voce viu um " + inimigo.nome + " Voce deseja? 1-Atacar ou 2-Correr 3-Auto-Ataque");
                             jogador1.resposta = Console.ReadLine();
                             jogador1.Batalhar(jogador1, inimigo);
