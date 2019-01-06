@@ -205,7 +205,7 @@ namespace RPGConsole
                             arma.nome = "Arco podre";
                             arma.dano = 1;
                             arma.equipado = true;
-                            jogador1.itensEquipadoArma = arma;
+                            jogador1.itensEquipadoArma = arma; 
                             armadura.nome = "Armadura podre";
                             armadura.armadura = 1;
                             armadura.equipado = true;
@@ -340,7 +340,7 @@ namespace RPGConsole
             else
             {
                 Console.WriteLine("Item na sua Bag:");
-                bag.ForEach(i => Console.WriteLine(i));
+                bag.ForEach(i => Console.WriteLine(i.nome));
             }
         }
         public void AdicionarItemNaBag(Personagem jogador1, Itens itemAdicionado)
@@ -368,7 +368,7 @@ namespace RPGConsole
         {
             foreach (var item in bag)
             {
-                if (itemASerRemovido == item)
+                if (itemASerRemovido.nome == item.nome)
                     return true;
             }
             return false;

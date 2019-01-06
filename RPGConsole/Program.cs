@@ -26,7 +26,7 @@ namespace RPGConsole
             jogador1.CriarPersonagem(jogador1);
             string nome = jogador1.nome;
             ////////////////////PARTE 1 DO GAME/////////////////////////
-            lore1.parte1(nome);
+            lore1.parte1(nome, jogador1);
 
 
             //LIXO//

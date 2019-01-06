@@ -10,10 +10,12 @@ namespace RPGConsole
     {
         public string seleção;
         public bool selecaoValida;
+        static string resposta { get; set; }
         //public string texto;
 
         public void inicio()
         {
+
             try
             {
                 seleção = "0";
@@ -127,9 +129,9 @@ namespace RPGConsole
                 inicio();
             }
         }
-        public void parte1(string nome)
+        public void parte1(string nome, Personagem jogador1)
         {
-            string resposta;
+            
             Console.WriteLine("/////////////////////////INICIO///////////////////////////");
             Console.WriteLine("Era tarde da noite e você estava em uma taverna bebendo cerveja, você acabara de voltar de um trabalho, escoltar Sir Benish até as vilas mais distantes do castelo para recolher os impostos da colheita de verão, um trabalho relativamente simples e que lhe rendeu um pagamento de 5 moedas de ouro, que você gastara agora na taverna com cerveja e gorjetas para os bardos e dançarinas.");
             Console.WriteLine("");
@@ -147,9 +149,10 @@ namespace RPGConsole
             Console.WriteLine("1 – Gostaria sim, mas não tenho toda essa quantia de dinheiro.");
             Console.WriteLine("2 – Não tenho interesse nenhum nisso.");
             Console.WriteLine("3 - Ei este pergaminho me pertence me devolva (roubar pergaminho)");
-            Console.WriteLine("Escolha sua resposta: 1, 2 ou 3");
+            Console.WriteLine("Escolha sua resposta: 1, 2, 3 ou um comando válido");
             Console.WriteLine("");
             resposta = Console.ReadLine();
+            VarificaResposta(resposta, jogador1);
             if (resposta == "1")
             {
                 Console.WriteLine("Mulher: Hmmm, o que podemos fazer é o seguinte, você me leva até lá e dividimos o valor do tesouro");
@@ -176,6 +179,40 @@ namespace RPGConsole
             resposta = Console.ReadLine();
 
         }
-            
+        public void VarificaResposta(string comando, Personagem Jogador1)
+        {
+            bool entrou = false;
+            switch (comando)
+            {
+                case "beber pocao":
+                    Console.WriteLine("Qual poção você gostaria de beber?");
+                    string nomePoçao = Console.ReadLine();
+                    Itens poçao = new Itens();
+                    poçao.nome = nomePoçao;
+                    if (Jogador1.VeificarSeItemExisteNaBag(Jogador1, poçao));
+                    Jogador1.BeberPocao(Jogador1, poçao);
+                    entrou = true;
+                    break;
+                case "olhar bag":
+                    Jogador1.OlharBag(Jogador1);
+                    entrou = true;
+                    break;
+                case "remover item":
+                    Console.WriteLine("Qual item você gostaria de remover da sua bag?");
+                    string nomeItem = Console.ReadLine();
+                    Itens novoItem = new Itens();
+                    novoItem.nome = nomeItem;
+                    Personagem jogador1 = new Personagem();
+                    jogador1.RemoverItemNaBag(jogador1, novoItem);
+                    entrou = true;
+                    break;
+            }
+            if (entrou == true)
+            {
+                Console.WriteLine("Escolha uma Resposta");
+                resposta = Console.ReadLine();
+                
+            }
+        }  
     }
 }
