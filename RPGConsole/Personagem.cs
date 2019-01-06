@@ -16,8 +16,6 @@ namespace RPGConsole
         public int força;
         public int inteligencia;
         public int vidaAtual;
-       // public int vidainimigo;
-        //public int ataquainimigo;
         public int vidaTotal;
         public string resposta;
         public string nomeinimigo;
@@ -212,6 +210,8 @@ namespace RPGConsole
                             armadura.armadura = 1;
                             armadura.equipado = true;
                             jogador1.itensEquipadoAmadura = armadura;
+                            bag.Add(arma);
+                            bag.Add(armadura);
                             Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
                             resposta = Console.ReadLine();
                             break;
@@ -233,6 +233,8 @@ namespace RPGConsole
                             armadura.armadura = 1;
                             armadura.equipado = true;
                             jogador1.itensEquipadoAmadura = armadura;
+                            bag.Add(arma);
+                            bag.Add(armadura);
                             Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
                             resposta = Console.ReadLine();
                             break;
@@ -253,6 +255,8 @@ namespace RPGConsole
                             armadura.armadura = 1;
                             armadura.equipado = true;
                             jogador1.itensEquipadoAmadura = armadura;
+                            bag.Add(arma);
+                            bag.Add(armadura);
                             Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
                             resposta = Console.ReadLine();
                             break;
