@@ -37,11 +37,11 @@ namespace RPGConsole
             int dano;
             if (classe == "Mago")
             {
-                dano = rdn.Next(0, inteligencia);
+                dano = rdn.Next(0, inteligencia) + itensEquipadoArma.dano;
             }
             else
             {
-                dano = rdn.Next(0, força);
+                dano = rdn.Next(0, força) + itensEquipadoArma.dano;
             }
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("1Seu dano foi: " + dano);
@@ -55,6 +55,9 @@ namespace RPGConsole
             {
                 Random rdn = new Random();
                 int dano = rdn.Next(0, inimigo.força);
+                dano = dano - itensEquipadoAmadura.armadura;
+                if (dano < 0)
+                    dano = 0;
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("O Inimigo Causou: " + dano);
                 vidaAtual = vidaAtual - dano;
@@ -68,11 +71,11 @@ namespace RPGConsole
             int dano;
             if (classe == "Mago")
             {
-                dano = rdn.Next(0, inteligencia);
+                dano = rdn.Next(0, inteligencia) + itensEquipadoArma.dano;
             }
             else
             {
-                dano = rdn.Next(0, força);
+                dano = rdn.Next(0, força) + itensEquipadoArma.dano;
             }
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Seu dano foi: " + dano);
@@ -187,9 +190,11 @@ namespace RPGConsole
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Digite o nome da classe que deseja:");
                     jogador1.classe = Console.ReadLine();
-
+                    Itens arma = new Itens();
+                    Itens armadura = new Itens();
                     switch (jogador1.classe)
                     {
+
                         case "1": //Arqueiro
                             jogador1.classe = "Arqueiro";
                             Console.WriteLine("Confirme seus dados, NOME: " + jogador1.nome + " Idade: " + jogador1.idade + " CLasse " + jogador1.classe);
@@ -198,7 +203,15 @@ namespace RPGConsole
                             jogador1.vidaAtual = 15;
                             jogador1.vidaTotal = 15;
                             jogador1.nivel = 1;
-                            jogador1.xp = 0;
+                            jogador1.xp = 0;                         
+                            arma.nome = "Arco podre";
+                            arma.dano = 1;
+                            arma.equipado = true;
+                            jogador1.itensEquipadoArma = arma;
+                            armadura.nome = "Armadura podre";
+                            armadura.armadura = 1;
+                            armadura.equipado = true;
+                            jogador1.itensEquipadoAmadura = armadura;
                             Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
                             resposta = Console.ReadLine();
                             break;
@@ -212,6 +225,14 @@ namespace RPGConsole
                             jogador1.vidaTotal = 10;
                             jogador1.nivel = 1;
                             jogador1.xp = 0;
+                            arma.nome = "varinha podre";
+                            arma.dano = 1;
+                            arma.equipado = true;
+                            jogador1.itensEquipadoArma = arma;
+                            armadura.nome = "Armadura podre";
+                            armadura.armadura = 1;
+                            armadura.equipado = true;
+                            jogador1.itensEquipadoAmadura = armadura;
                             Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
                             resposta = Console.ReadLine();
                             break;
@@ -224,6 +245,14 @@ namespace RPGConsole
                             jogador1.vidaTotal = 20;
                             jogador1.nivel = 1;
                             jogador1.xp = 0;
+                            arma.nome = "Espada podre";
+                            arma.dano = 1;
+                            arma.equipado = true;
+                            jogador1.itensEquipadoArma = arma;
+                            armadura.nome = "Armadura podre";
+                            armadura.armadura = 1;
+                            armadura.equipado = true;
+                            jogador1.itensEquipadoAmadura = armadura;
                             Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
                             resposta = Console.ReadLine();
                             break;
@@ -240,6 +269,10 @@ namespace RPGConsole
                 Console.WriteLine("Força: " + jogador1.força);
                 Console.WriteLine("Inteligencia: " + jogador1.inteligencia);
                 Console.WriteLine("Vida: " + jogador1.vidaTotal);
+                Console.WriteLine("");
+                Console.WriteLine("Itens:");
+                Console.WriteLine("Arma " + itensEquipadoArma.nome);
+                Console.WriteLine("Armadura " + itensEquipadoAmadura.nome);
                 Console.ForegroundColor = ConsoleColor.White;
             }
             catch
