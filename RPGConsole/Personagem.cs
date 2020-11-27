@@ -23,147 +23,14 @@ namespace RPGConsole
         public int xp;
         public int xpProxNivel = 100;
         public int nivel;
+        public DateTime dataCriacao;
         public int gold;
         public int silver;
         List<Itens> bag = new List<Itens>();
         public Itens itensEquipadoArma;
         public Itens itensEquipadoAmadura;
 
-        public void Atacar(Inimigos inimigo)
-        {
-            Random rdn = new Random();
-            int dano;
-            if (classe == "Mago")
-            {
-                dano = rdn.Next(0, inteligencia) + itensEquipadoArma.dano;
-            }
-            else
-            {
-                dano = rdn.Next(0, força) + itensEquipadoArma.dano;
-            }
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("1Seu dano foi: " + dano);
-            inimigo.vida = inimigo.vida - dano;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("1Vida do Inimigo: " + inimigo.vida);
-            Console.ReadKey();
-        }
-        public void Atacarinimigo(Inimigos inimigo)
-        {
-            {
-                Random rdn = new Random();
-                int dano = rdn.Next(0, inimigo.força);
-                dano = dano - itensEquipadoAmadura.armadura;
-                if (dano < 0)
-                    dano = 0;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("O Inimigo Causou: " + dano);
-                vidaAtual = vidaAtual - dano;
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Sua Vida: " + vidaAtual);
-            }
-        }
-        public void AutoAtacar(Inimigos inimigo)
-        {
-            Random rdn = new Random();
-            int dano;
-            if (classe == "Mago")
-            {
-                dano = rdn.Next(0, inteligencia) + itensEquipadoArma.dano;
-            }
-            else
-            {
-                dano = rdn.Next(0, força) + itensEquipadoArma.dano;
-            }
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Seu dano foi: " + dano);
-            inimigo.vida = inimigo.vida - dano;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Vida do Inimigo: " + inimigo.vida);
-        }
-        public void Batalhar(Personagem jogador1, Inimigos inimigo)
-        {
-            fimdebatalha = "não";
-            while (fimdebatalha == "não")
-            {
-                while (resposta == "3")
-                {
-                    while (inimigo.vida >= 1)
-                    {
-                        AutoAtacar(inimigo);
-                        Atacarinimigo(inimigo);
-                        if (vidaAtual <= 0)
-                        {
-                            Console.WriteLine("Voce morreu");
-                            Thread.Sleep(1500);
-                            Console.Clear();
 
-                        }
-
-                    }
-                    fimdebatalha = "sim";
-                    resposta = "matou";
-                    Console.WriteLine("Você Matou o inimigo");
-                    Console.WriteLine("XP ganho: " + inimigo.xpGanho);
-                    xp = xp + inimigo.xpGanho;
-                    Console.WriteLine("XP Total: " + xp);
-                    CalcularNivel(jogador1);
-
-                }
-                while (resposta == "1")
-                {
-                    while (inimigo.vida >= 1)
-                    {
-                        Atacar(inimigo);
-                        Atacarinimigo(inimigo);
-                        if (vidaAtual <= 0)
-                        {
-                            Console.WriteLine("Voce morreu");
-                            Thread.Sleep(1500);
-                            Console.Clear();
-
-                        }
-
-                    }
-                    fimdebatalha = "sim";
-                    resposta = "matou";
-                    Console.WriteLine("Você Matou o Inimigo");
-                    Console.WriteLine("XP ganho: " + inimigo.xpGanho);
-                    xp = xp + inimigo.xpGanho;
-                    Console.WriteLine("XP Total: " + xp);
-                    CalcularNivel(jogador1);
-                }
-                while (resposta == "2")
-                {
-                    Random rdn = new Random();
-                    int correr = rdn.Next(1, 23);
-                    if (correr == 1)
-                    {
-                        Console.WriteLine("Voce correu do inimigo");
-                        resposta = "correu";
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("Voce falhou em correr do inimigo");
-                        Atacarinimigo(inimigo);
-                        Console.WriteLine("1-Atacar 2-Correr 3-Auto Ataque");
-                        resposta = Console.ReadLine();
-                        fimdebatalha = "não";
-                    }
-
-                }
-            }
-            if (resposta == "matou")
-            {
-                Console.WriteLine("Boa");
-            }
-            if (resposta == "correu")
-            {
-                Console.WriteLine("Boa");
-            }
-            Console.ReadKey();
-        }
         public void CriarPersonagem(Personagem jogador1)
         {
             try
@@ -171,37 +38,40 @@ namespace RPGConsole
                 resposta = "não";
                 while (resposta == "não")
                 {
+                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-
                     Console.WriteLine("Digite seu nome");
                     jogador1.nome = Console.ReadLine();
+                    Console.Clear();
                     Console.WriteLine(jogador1.nome + " Qual sua Idade?");
                     jogador1.idade = int.Parse(Console.ReadLine());
+                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine(jogador1.nome + " Escolha uma classe: " + "Arqueiro, Mago ou Guerreiro");
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Digite 1 para Arquerio: Força 2, Inteligencia 2, Vida 10");
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Digite 2 para Mago: Força 1, Inteligencia 4, Vida 5");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Digite 3 para Guerreiro: Força 4, Inteligencia 0, Vida 15");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Digite o nome da classe que deseja:");
+                    Console.WriteLine($"                                   Escolha sua Classe:                           ");
+                    Console.WriteLine();
+                    Console.WriteLine($"     ╔═══════════════════════╗   ╔═══════════════════════╗    ╔═══════════════════════╗        ");
+                    Console.WriteLine($"     ║   [1]   Arqueiro      ║   ║   [2]     Mago        ║    ║   [3]  Guerreiro      ║        ");
+                    Console.WriteLine($"     ║═══════════════════════║   ║═══════════════════════║    ║═══════════════════════║        ");
+                    Console.WriteLine($"     ║  Força: [2]           ║   ║  Força: [1]           ║    ║  Força: [4]           ║        ");
+                    Console.WriteLine($"     ║  inteligência: [2]    ║   ║  inteligência: [4]    ║    ║  inteligência: [0]    ║        ");
+                    Console.WriteLine($"     ║  Vida: [10]           ║   ║  Vida: [5]            ║    ║  Vida: [15]           ║        ");
+                    Console.WriteLine($"     ╚═══════════════════════╝   ╚═══════════════════════╝    ╚═══════════════════════╝        ");
+                    Console.WriteLine($"                                   Digite o Numero da sua Classe:                              ");
+
                     jogador1.classe = Console.ReadLine();
                     Itens arma = new Itens();
                     Itens armadura = new Itens();
                     switch (jogador1.classe)
                     {
-
                         case "1": //Arqueiro
                             jogador1.classe = "Arqueiro";
-                            Console.WriteLine("Confirme seus dados, NOME: " + jogador1.nome + " Idade: " + jogador1.idade + " CLasse " + jogador1.classe);
                             jogador1.força = 3;
                             jogador1.inteligencia = 2;
                             jogador1.vidaAtual = 15;
                             jogador1.vidaTotal = 15;
                             jogador1.nivel = 1;
-                            jogador1.xp = 0;                         
+                            jogador1.xp = 0;
+                            jogador1.dataCriacao = DateTime.Now;
                             arma.nome = "Arco podre";
                             arma.dano = 1;
                             arma.equipado = true;
@@ -212,19 +82,17 @@ namespace RPGConsole
                             jogador1.itensEquipadoAmadura = armadura;
                             bag.Add(arma);
                             bag.Add(armadura);
-                            Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
-                            resposta = Console.ReadLine();
                             break;
 
-                        case "2"://MAgo
+                        case "2"://Mago
                             jogador1.classe = "Mago";
-                            Console.WriteLine("Confirme seus dados, NOME: " + jogador1.nome + " Idade: " + jogador1.idade + " CLasse " + jogador1.classe);
                             jogador1.força = 2;
                             jogador1.inteligencia = 4;
                             jogador1.vidaAtual = 10;
                             jogador1.vidaTotal = 10;
                             jogador1.nivel = 1;
                             jogador1.xp = 0;
+                            jogador1.dataCriacao = DateTime.Now;
                             arma.nome = "varinha podre";
                             arma.dano = 1;
                             arma.equipado = true;
@@ -235,18 +103,16 @@ namespace RPGConsole
                             jogador1.itensEquipadoAmadura = armadura;
                             bag.Add(arma);
                             bag.Add(armadura);
-                            Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
-                            resposta = Console.ReadLine();
                             break;
                         case "3"://Guerreiro
                             jogador1.classe = "Guerreiro";
-                            Console.WriteLine("Confirme seus dados, NOME: " + jogador1.nome + " Idade: " + jogador1.idade + " CLasse " + jogador1.classe);
                             jogador1.força = 5;
                             jogador1.inteligencia = 1;
                             jogador1.vidaAtual = 20;
                             jogador1.vidaTotal = 20;
                             jogador1.nivel = 1;
                             jogador1.xp = 0;
+                            jogador1.dataCriacao = DateTime.Now;
                             arma.nome = "Espada podre";
                             arma.dano = 1;
                             arma.equipado = true;
@@ -257,27 +123,11 @@ namespace RPGConsole
                             jogador1.itensEquipadoAmadura = armadura;
                             bag.Add(arma);
                             bag.Add(armadura);
-                            Console.WriteLine("Seus dados estão corretos? " + "1-sim ou 2-não");
-                            resposta = Console.ReadLine();
                             break;
                     }
-
+                    MostraDadosdoJogador(jogador1);
+                    resposta = "sim";
                 }
-                Console.WriteLine("Personagem criado com sucesso.");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Nome: " + jogador1.nome);
-                Console.WriteLine("Idade: " + jogador1.idade);
-                Console.WriteLine("Classe: " + jogador1.classe);
-                Console.WriteLine("");
-                Console.WriteLine("Atributos:");
-                Console.WriteLine("Força: " + jogador1.força);
-                Console.WriteLine("Inteligencia: " + jogador1.inteligencia);
-                Console.WriteLine("Vida: " + jogador1.vidaTotal);
-                Console.WriteLine("");
-                Console.WriteLine("Itens:");
-                Console.WriteLine("Arma " + itensEquipadoArma.nome);
-                Console.WriteLine("Armadura " + itensEquipadoAmadura.nome);
-                Console.ForegroundColor = ConsoleColor.White;
             }
             catch
             {
@@ -285,24 +135,20 @@ namespace RPGConsole
                 CriarPersonagem(jogador1);
             }
         }
-        public void CalcularNivel(Personagem jogador1)
+        
+        public void MostraDadosdoJogador(Personagem jogador1)
         {
-            if (xp >= xpProxNivel)
-            {
-                nivel = nivel + 1;
-                xpProxNivel = xpProxNivel * 2;
-                jogador1.nivel = nivel;
-                jogador1.vidaTotal = vidaTotal + vidaTotal;
-                jogador1.vidaAtual = jogador1.vidaTotal;
-                jogador1.força = força + força;
-                jogador1.inteligencia = inteligencia + inteligencia;
-                Console.WriteLine("Você subio de Nivel: " + nivel);
-                Console.WriteLine("Atributos:");
-                Console.WriteLine("Força: " + jogador1.força);
-                Console.WriteLine("Inteligencia: " + jogador1.inteligencia);
-                Console.WriteLine("Vida: " + jogador1.vidaAtual);
-                Console.ForegroundColor = ConsoleColor.White;
-            }
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"               [{jogador1.nome}] Nivel: [{jogador1.nivel}]  -  Classe: [{jogador1.classe}]              ");
+            Console.WriteLine($"   ║Sua Vida: [{jogador1.vidaAtual}]      ");
+            Console.WriteLine($"   ║Sua Defesa: [{jogador1.itensEquipadoAmadura.armadura}]   ");
+            Console.WriteLine($"   ║Sua Dano: [{jogador1.força}]      ");
+            Console.WriteLine($"   ║Sua Dinheiro: [{jogador1.gold}g {jogador1.silver}s]        ");
+            Console.WriteLine($"   ║Arma: [{jogador1.itensEquipadoArma.nome}] Dano: [{jogador1.itensEquipadoArma.dano}]       ");
+            Console.WriteLine($"   ║Armadura: [{jogador1.itensEquipadoAmadura.nome}] Armadura: [{jogador1.itensEquipadoAmadura.armadura}]        ");
+            Console.WriteLine($"   Pressione qualquer tecla para continuar         ");
+            Console.ReadLine();
         }
         public void ComprarItem(Personagem jogador1, int valorDoItem, Itens ItemComprado)
         {
@@ -332,6 +178,8 @@ namespace RPGConsole
                     Console.WriteLine("Seu troco silver: " + silver);
                 }
             }
+            Console.WriteLine($"   Pressione qualquer tecla para continuar         ");
+            Console.ReadLine();
         }
         public void OlharBag(Personagem jogador1)
         {
@@ -346,7 +194,7 @@ namespace RPGConsole
         public void AdicionarItemNaBag(Personagem jogador1, Itens itemAdicionado)
         {
             bag.Add(itemAdicionado);
-            Console.WriteLine("O item " + itemAdicionado + "foi adicionado a sua bag");
+            Console.WriteLine("O item " + itemAdicionado.nome + "foi adicionado a sua bag");
         }
         public void RemoverItemNaBag(Personagem jogador1, Itens itemRemovido)
         {

@@ -39,5 +39,16 @@ namespace RPGConsole
             Console.SetWindowSize(150, 40);
         }
 
+        public static List<string> ComandosValidosCombate()
+        {
+            List<string> listaComandosValidosCombate = new List<string>()
+            {
+                "1",
+                "2",
+                "3"
+            };
+            return listaComandosValidosCombate;
+        }
+
     }
 }

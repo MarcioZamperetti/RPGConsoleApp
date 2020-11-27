@@ -5,3 +5,5 @@ RPGConsole/bin/Debug/RPG Console.exe
 RPGConsole/bin/Debug/RPG Console.pdb
 RPGConsole/obj/Debug/RPG Console.exe
 RPGConsole/obj/Debug/RPG Console.pdb
+RPGConsole/bin/*
+RPGConsole/obj/*

@@ -25,3 +25,10 @@ C:\Users\Marcio\Documents\GitHub\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.
 C:\Users\Marcio\Documents\GitHub\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.csproj.CoreCompileInputs.cache
 C:\Users\Marcio\Documents\GitHub\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.exe
 C:\Users\Marcio\Documents\GitHub\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.pdb
+C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.csprojAssemblyReference.cache
+C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.csproj.CoreCompileInputs.cache
+C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.exe
+C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.pdb
+C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\bin\Debug\RPG Console.exe.config
+C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\bin\Debug\RPG Console.exe
+C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\bin\Debug\RPG Console.pdb

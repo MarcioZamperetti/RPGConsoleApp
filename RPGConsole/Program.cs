@@ -13,30 +13,18 @@ namespace RPGConsole
         public static void Main(string[] args)
         {
             Configuracoes.ConfiguraJanela();
-            Lore lore1;
-            lore1 = new Lore();
-            string resposta = "não";
-            Personagem jogador1;
-            jogador1 = new Personagem();
-            //public string resposta = "não";
+            Lore lore1 = new Lore();
+            Personagem jogador1 = new Personagem();
 
             ////////////////////INICIO DO JOGO//////////////////////////
             lore1.inicio();
             ///////////////////CRIAR PERSONAGEM/////////////////////////
             jogador1.CriarPersonagem(jogador1);
-            string nome = jogador1.nome;
             ////////////////////PARTE 1 DO GAME/////////////////////////
-            lore1.parte1(nome, jogador1);
-
-
-            //LIXO//
+            lore1.parte1(jogador1);
 
             Console.WriteLine("Voltou pro game");
-
             Console.ReadKey();
-
-
-
         }
     }
 }

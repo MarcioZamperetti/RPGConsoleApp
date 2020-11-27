@@ -22,6 +22,7 @@ namespace RPGConsole
 
                 while (seleção == "0")
                 {
+                    Console.Clear();
                     Console.WriteLine("Mundo de Mystara");
                     Console.WriteLine("");
                     Console.WriteLine("");
@@ -54,9 +55,8 @@ namespace RPGConsole
                         while (seleção == "3")
                         {
                             Inimigos inimigo = Inimigos.CriaçãoInimigos("rato");
-                            Console.WriteLine("Voce viu um " + inimigo.nome + " Voce deseja? 1-Atacar ou 2-Correr 3-Auto-Ataque");
-                            jogador1.resposta = Console.ReadLine();
-                            jogador1.Batalhar(jogador1, inimigo);
+                            SistemaDeBatalha SistemaDeBatalha = new SistemaDeBatalha();
+                            SistemaDeBatalha.InicioBatalha(jogador1, inimigo);
                         }
 
                     }
@@ -82,7 +82,7 @@ namespace RPGConsole
                         Console.WriteLine("Lista de comandos basicos:");
                         Console.WriteLine("olhar bag");
                         Console.WriteLine("remover item");
-                        Console.WriteLine("beber pocão");
+                        Console.WriteLine("beber poção");
                         Console.WriteLine("Digite algum comando para testar sua ação:");
                         seleção = Console.ReadLine();
                     }
@@ -90,7 +90,11 @@ namespace RPGConsole
                     {
                         selecaoValida = true;
                         Personagem jogador1 = new Personagem();
+                        Itens novoItem = new Itens();
+                        novoItem.nome = "Espada Longa";
+                        jogador1.AdicionarItemNaBag(jogador1, novoItem);
                         jogador1.OlharBag(jogador1);
+                        Console.ReadLine();
                     }
                     if (seleção == "remover item")
                     {
@@ -129,7 +133,7 @@ namespace RPGConsole
                 inicio();
             }
         }
-        public void parte1(string nome, Personagem jogador1)
+        public void parte1(Personagem jogador1)
         {
             
             Console.WriteLine("/////////////////////////INICIO///////////////////////////");
@@ -157,23 +161,26 @@ namespace RPGConsole
             {
                 Console.WriteLine("Mulher: Hmmm, o que podemos fazer é o seguinte, você me leva até lá e dividimos o valor do tesouro");
                 Console.ReadKey();
-                Console.WriteLine(nome + ": Claro vamos nessa.");
+                Console.WriteLine(jogador1.nome + ": Claro vamos nessa.");
             }
             if (resposta == "2")
             {
                 Console.WriteLine("Mulher: Posso saber o motivo?");
                 Console.ReadKey();
-                Console.WriteLine(nome + ": Não tenho dinheiro.");
+                Console.WriteLine(jogador1.nome + ": Não tenho dinheiro.");
                 Console.ReadKey();
                 Console.WriteLine("Mulher: Hmmm, o que podemos fazer é o seguinte, você me leva até lá e dividimos o valor do tesouro");
                 Console.ReadKey();
-                Console.WriteLine(nome + ": Claro vamos nessa.");
+                Console.WriteLine(jogador1.nome + ": Claro vamos nessa.");
             }
             if (resposta == "3")
             {
-                Console.WriteLine("Mulher Ei, Isso é meu.");
-                Console.WriteLine("A mulher começa a falar palavras incompreensíveis, sumona uma bola de fogo e a atira contra você");
-                Console.WriteLine("Você morreu");
+                Console.WriteLine("Mulher: Ei, Isso é meu.");
+                Console.WriteLine("A mulher começa a falar palavras incompreensíveis, seus olhos ficam escuros, e uma aura negra fica em sua volta");
+                Console.ReadLine();
+                Inimigos inimigo = Inimigos.CriaçãoInimigos("mulher");
+                SistemaDeBatalha SistemaDeBatalha = new SistemaDeBatalha();
+                SistemaDeBatalha.InicioBatalha(jogador1, inimigo);
             }
             Console.WriteLine("ccccccccccccccccccccccccccc");
             resposta = Console.ReadLine();
