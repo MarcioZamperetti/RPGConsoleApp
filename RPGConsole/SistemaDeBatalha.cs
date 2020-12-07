@@ -225,7 +225,7 @@ namespace RPGConsole
             Console.WriteLine();
             Console.WriteLine($"║    Vida do {inimigo.nome}: [{inimigo.vida}]  [{atualizaBarraVida(inimigo.vidaTotal, inimigo.vida)}]  ║  Sua Vida: [{jogador1.vidaAtual}]  [{atualizaBarraVida(jogador1.vidaTotal, jogador1.vidaAtual)}] ");
             Console.WriteLine();
-            Thread.Sleep(1500);
+            Thread.Sleep(800);
         }
 
         public void MontaStatusBatalha(Personagem jogador1, Inimigos inimigo)
@@ -260,7 +260,7 @@ namespace RPGConsole
             string resposta = Console.ReadLine();
             if (resposta == "2")
             {
-                
+                Environment.Exit(0);
             }
             else
             {

@@ -59,6 +59,8 @@ namespace RPGConsole
                     Console.WriteLine($"                                   Digite o Numero da sua Classe:                              ");
 
                     jogador1.classe = Console.ReadLine();
+                    if (!Configuracoes.ComandosValidosCombate().Any(l => l == jogador1.classe))
+                        CriarPersonagem(jogador1);
                     Itens arma = new Itens();
                     Itens armadura = new Itens();
                     switch (jogador1.classe)

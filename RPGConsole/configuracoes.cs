@@ -50,5 +50,80 @@ namespace RPGConsole
             return listaComandosValidosCombate;
         }
 
+        public static void MontaPainelDialogos(string dialogo, string nome)
+        {
+            string[] paravras = dialogo.Split(' ');
+
+            Console.Clear();
+            Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗");
+            MontaNome(nome);
+            Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║");
+            MostraLinha(paravras);
+            Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("Precione qualquer tecla para continuar");
+            Console.ReadKey();
+        }
+
+        public static void MostraLinha(string[] paravras)
+        {
+            int contadorPalavras = 0;
+            while (paravras.Length > contadorPalavras)
+            {
+                string espaco = " ";
+                string traco = "║";
+                string linha = "";
+
+                for (int i = 0; i < 66; i++)
+                {
+                    if (i == 0)
+                        linha += traco;
+                    if (i == 1 || i == 2)
+                        linha += espaco;
+
+                    if (i >= 3)
+                    {
+                        if (contadorPalavras < paravras.Length)
+                        {
+                            linha += $"{paravras[contadorPalavras]} ";
+                            i += paravras[contadorPalavras].Length + 1;
+                            contadorPalavras++;
+                        }
+                    }
+                }
+                for (int h = linha.Length; h <= 67; h++)
+                {
+                    linha += espaco;
+                    if (h == 67)
+                        linha += traco;
+                }
+                Console.WriteLine(linha);
+            }
+        }
+
+        public static void MontaNome(string nome)
+        {
+            string espaco = " ";
+            string traco = "║";
+            string linha = "";
+
+            for (int i = 0; i <= 69; i++)
+            {
+                if (i == 0)
+                    linha += traco;
+                if (i == 1 || i == 2)
+                    linha += espaco;
+                if (i == 3)
+                {
+                    linha += $"{nome}:";
+                    i += nome.Length + 3;
+                }
+                if (i > 4)
+                    linha += espaco;
+                if (i == 69)
+                    linha += traco;
+            }
+            Console.WriteLine(linha);
+        }
+
     }
 }

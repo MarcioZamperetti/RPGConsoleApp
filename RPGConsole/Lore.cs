@@ -15,13 +15,13 @@ namespace RPGConsole
 
         public void inicio()
         {
-
             try
             {
                 seleção = "0";
 
                 while (seleção == "0")
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
                     Console.WriteLine("Mundo de Mystara");
                     Console.WriteLine("");
@@ -41,8 +41,7 @@ namespace RPGConsole
                     }
                     if (seleção == "2")
                     {
-                        Console.WriteLine("Este jogo foi desenvolvido para aprender c#, de uma forma não maçante, encorajo todos que querem aprender a programar a criar um jogo.");
-                        Console.WriteLine("Aperte alguma tecla para voltar para o menu");
+                        Configuracoes.MontaPainelDialogos("Olá pessoas, 0/ Esse projeto teve início em 2017 quando comecei a trabalhar como desenvolvedor, a ideia era aprender c# através do desenvolvimento de um jogo de RPG todo textual. Foi a maneira mais legal que eu encontrei para aplicar os conhecimentos adquiridos nas aulas. Encorajo a todos que “brinquem” de fazer um jogo também, ou se quiser contribuir nesse projeto só dar um pull request =D.", "Marcio Zamperetti");
                         Console.ReadKey();
                         seleção = "0";
                             selecaoValida = true;
@@ -135,49 +134,91 @@ namespace RPGConsole
         }
         public void parte1(Personagem jogador1)
         {
-            
-            Console.WriteLine("/////////////////////////INICIO///////////////////////////");
-            Console.WriteLine("Era tarde da noite e você estava em uma taverna bebendo cerveja, você acabara de voltar de um trabalho, escoltar Sir Benish até as vilas mais distantes do castelo para recolher os impostos da colheita de verão, um trabalho relativamente simples e que lhe rendeu um pagamento de 5 moedas de ouro, que você gastara agora na taverna com cerveja e gorjetas para os bardos e dançarinas.");
-            Console.WriteLine("");
-            Console.ReadKey();
-            Console.WriteLine("Entre uma cerveja e outra, entra uma mulher na taverna. Ela estava vestindo um gibão de couro fervido, uma roupa nada usual a uma mulher. Ela entra na caverna com um ar de espanto e medo, e se dirige até o balcão, Tira de uma pequena bolsa de couro que carregava consigo um pergaminho coloca na bancada.");
-            Console.WriteLine("");
-            Console.ReadKey();
-            Console.WriteLine("Mesmo sem ouvir a conversa, você nota que ela está tentando vender o pergaminho ao taverneiro.");
-            Console.WriteLine("");
-            Console.ReadKey();
-            Console.WriteLine("O taverneiro faz um sinal que não quer comprar nada e a manda embora com um gesto, então a mulher olha em volta e se dirige até sua mesa.");
-            Console.WriteLine("");
-            Console.ReadKey();
-            Console.WriteLine("Mulher: Boa noite Sir, notei pelas suas vestimentas que és um aventureiro, você ainda vestia sua cota de malha, estou vendendo este pergaminho que leva a um tesouro a muito esquecido, você gostaria de compra-lo? Estou vendendo por 50 moedas de ouro.(você póssuia apenas mais 3 moedas de outro em sua bolsa, já destinadas a mais cervejas.");
-            Console.WriteLine("1 – Gostaria sim, mas não tenho toda essa quantia de dinheiro.");
-            Console.WriteLine("2 – Não tenho interesse nenhum nisso.");
-            Console.WriteLine("3 - Ei este pergaminho me pertence me devolva (roubar pergaminho)");
-            Console.WriteLine("Escolha sua resposta: 1, 2, 3 ou um comando válido");
-            Console.WriteLine("");
+            Console.Clear();
+            Configuracoes.MontaPainelDialogos("Era tarde da noite e você estava em uma taverna bebendo cerveja você acabara de voltar de um trabalho, escoltar Sir Benish até as vilas mais distantes do castelo para recolher os impostos da colheita de verão. Um trabalho relativamente simples e que lhe rendeu um pagamento de 5 moedas de ouro, que você gastara na taverna com cerveja e gorjetas para os bardos e dançarinas.", "Narrador");
+            Configuracoes.MontaPainelDialogos("Entre uma cerveja e outra, entra uma mulher na taverna. Ela estava vestindo um gibão de couro fervido, uma roupa nada usual para uma mulher. Ela entra na caverna com um ar de espanto e medo, e se dirige até o balcão, Tira de uma pequena bolsa de couro que carregava consigo um pergaminho coloca na bancada.", "Narrador");
+            Configuracoes.MontaPainelDialogos("Mesmo sem ouvir a conversa, você nota que ela está tentando vender o pergaminho ao taverneiro. O taverneiro faz um sinal que não quer comprar nada e a manda embora com um gesto, então a mulher olha em volta e se dirige até sua mesa.", "Narrador");
+            Configuracoes.MontaPainelDialogos("Boa noite senhor, notei pelas suas vestimentas que és um aventureiro, estou vendendo este pergaminho que leva a um tesouro a muito esquecido, você gostaria de compra-lo? Estou vendendo por 50 moedas de ouro.", "Mulher");
+            Console.Clear();
+            Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗             ");
+            Console.WriteLine($"║  Escolha sua Ação:                                                ║              ");
+            Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║                ");
+            Console.WriteLine($"║ [1] – Gostaria sim, mas não tenho toda essa quantia de dinheiro.  ║                   ");
+            Console.WriteLine($"║ [2] – Não tenho interesse nenhum nisso.                           ║                 ");
+            Console.WriteLine($"║ [3] - Ei este pergaminho me pertence (roubar pergaminho)          ║                 ");
+            Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝              ");
+            Console.WriteLine("Precione qualquer tecla para continuar");   
             resposta = Console.ReadLine();
+            Console.Clear();
             VarificaResposta(resposta, jogador1);
             if (resposta == "1")
             {
                 Console.WriteLine("Mulher: Hmmm, o que podemos fazer é o seguinte, você me leva até lá e dividimos o valor do tesouro");
                 Console.ReadKey();
                 Console.WriteLine(jogador1.nome + ": Claro vamos nessa.");
+
+                Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗             ");
+                Console.WriteLine($"║  Mulher:                                                          ║              ");
+                Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║                ");
+                Console.WriteLine($"║ Hmmm, o que podemos fazer é o seguinte,                           ║                   ");
+                Console.WriteLine($"║  você me leva até lá e dividimos o valor do tesouro.              ║                 ");
+                Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝              ");
+                Console.WriteLine("Precione qualquer tecla para continuar");
+                Console.ReadKey();
+                Console.Clear();
+
             }
             if (resposta == "2")
             {
                 Console.WriteLine("Mulher: Posso saber o motivo?");
+
+                Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗             ");
+                Console.WriteLine($"║  Mulher:                                                          ║              ");
+                Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║                ");
+                Console.WriteLine($"║ Posso saber o motivo?                                             ║                   ");
+                Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝              ");
+                Console.WriteLine("Precione qualquer tecla para continuar");
+                Console.ReadKey();
+                Console.Clear();
                 Console.ReadKey();
                 Console.WriteLine(jogador1.nome + ": Não tenho dinheiro.");
+                Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗             ");
+                Console.WriteLine($"║  Você:                                                            ║              ");
+                Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║                ");
+                Console.WriteLine($"║ Não tenho dinheiro.                                               ║                   ");
+                Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝              ");
+                Console.WriteLine("Precione qualquer tecla para continuar");
                 Console.ReadKey();
-                Console.WriteLine("Mulher: Hmmm, o que podemos fazer é o seguinte, você me leva até lá e dividimos o valor do tesouro");
+                Console.Clear();
+                Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗             ");
+                Console.WriteLine($"║  Mulher:                                                          ║              ");
+                Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║                ");
+                Console.WriteLine($"║ Hmmm, o que podemos fazer é o seguinte,                           ║                   ");
+                Console.WriteLine($"║  você me leva até lá e dividimos o valor do tesouro.              ║                 ");
+                Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝              ");
+                Console.WriteLine("Precione qualquer tecla para continuar");
                 Console.ReadKey();
-                Console.WriteLine(jogador1.nome + ": Claro vamos nessa.");
+                Console.Clear();
+                Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗             ");
+                Console.WriteLine($"║  Você:                                                            ║              ");
+                Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║                ");
+                Console.WriteLine($"║ Claro, vamos nessa.                                               ║                   ");
+                Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝              ");
+                Console.WriteLine("Precione qualquer tecla para continuar");
+                Console.ReadKey();
+                Console.Clear();
             }
             if (resposta == "3")
             {
-                Console.WriteLine("Mulher: Ei, Isso é meu.");
-                Console.WriteLine("A mulher começa a falar palavras incompreensíveis, seus olhos ficam escuros, e uma aura negra fica em sua volta");
-                Console.ReadLine();
+                Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗             ");
+                Console.WriteLine($"║  Mulher:                                                          ║              ");
+                Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║                ");
+                Console.WriteLine($"║ Ei, Isso é meu. A mulher começa a falar palavras incompreensíveis,║                   ");
+                Console.WriteLine($"║  seus olhos ficam escuros, e uma aura negra fica em sua volta     ║                 ");
+                Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝              ");
+                Console.WriteLine("Precione qualquer tecla para continuar");
+                Console.ReadKey();
+                Console.Clear();
                 Inimigos inimigo = Inimigos.CriaçãoInimigos("mulher");
                 SistemaDeBatalha SistemaDeBatalha = new SistemaDeBatalha();
                 SistemaDeBatalha.InicioBatalha(jogador1, inimigo);
