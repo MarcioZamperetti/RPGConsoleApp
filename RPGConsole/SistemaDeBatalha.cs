@@ -117,6 +117,7 @@ namespace RPGConsole
                 Console.WriteLine($"Você Derrotou o [{inimigo.nome}] Parabéns =)");
                 Console.WriteLine("XP ganho: " + inimigo.xpGanho);
                 Console.WriteLine("XP Total: " + jogador1.xp);
+                MusicaDaVitoria();
                 Console.WriteLine("Pressione qualquer tecla para continuar ");
 
                 CalcularNivel(jogador1);
@@ -269,6 +270,19 @@ namespace RPGConsole
             }
                 
 
+        }
+
+        public static void MusicaDaVitoria()
+        {
+            Console.Beep(987, 150);
+            Console.Beep(987, 150);
+            Console.Beep(987, 150);
+            Console.Beep(987, 450);
+            Console.Beep(784, 320);
+            Console.Beep(880, 320);
+            Console.Beep(987, 150);
+            Console.Beep(880, 150);
+            Console.Beep(987, 857);
         }
     }
 }
