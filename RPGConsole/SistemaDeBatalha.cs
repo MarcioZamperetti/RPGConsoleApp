@@ -14,7 +14,7 @@ namespace RPGConsole
         {
             Random rdn = new Random();
             int dano;
-            if (jogador1.classe == "Mago")
+            if (jogador1.classe == Personagem.Classes.Mago)
                 dano = rdn.Next(0, jogador1.inteligencia) + jogador1.itensEquipadoArma.dano;
             else
                 dano = rdn.Next(0, jogador1.força) + jogador1.itensEquipadoArma.dano;
@@ -42,7 +42,7 @@ namespace RPGConsole
         {
             Random rdn = new Random();
             int dano;
-            if (jogador1.classe == "Mago")
+            if (jogador1.classe == Personagem.Classes.Mago)
                 dano = rdn.Next(0, jogador1.inteligencia) + jogador1.itensEquipadoArma.dano;
             else
                 dano = rdn.Next(0, jogador1.força) + jogador1.itensEquipadoArma.dano;
@@ -73,7 +73,7 @@ namespace RPGConsole
                     }
                     fimDaBatalha = true;
                     resposta = "matou";
-                    jogador1.xp = jogador1.xp + inimigo.xpGanho;  
+                    jogador1.xp = jogador1.xp + inimigo.xpGanho;
                 }
                 while (resposta == "1")
                 {
@@ -132,6 +132,7 @@ namespace RPGConsole
         {
             if (jogador1.xp >= jogador1.xpProxNivel)
             {
+                Console.Clear();
                 jogador1.nivel = jogador1.nivel + 1;
                 jogador1.xpProxNivel = jogador1.xpProxNivel * 2;
                 jogador1.vidaTotal = jogador1.vidaTotal + jogador1.vidaTotal;
@@ -144,13 +145,14 @@ namespace RPGConsole
                 Console.WriteLine("          @xxxxx[{:::::::::::::::::::::> ");
                 Console.WriteLine("                [                        ");
                 Console.WriteLine("                                         ");
-                Console.WriteLine($"Você subio para o Nivel: [{jogador1.nivel}]");
+                Console.WriteLine($"Você subiu para o Nivel: [{jogador1.nivel}]");
                 Console.WriteLine("Atributos:");
                 Console.WriteLine($"Força: [{jogador1.força}]");
                 Console.WriteLine($"Inteligencia: [{jogador1.inteligencia}]");
                 Console.WriteLine($"Vida: [{jogador1.vidaAtual}]");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Pressione qualquer tecla para continuar ");
+                Console.ReadKey();
             }
         }
 
@@ -165,7 +167,7 @@ namespace RPGConsole
             Console.WriteLine();
             if (turno == "jogador")
             {
-                Console.ForegroundColor = ConsoleColor.Green;                
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"║ Seu Turno:           ");
                 Console.WriteLine($"║    Seu dano foi: [{dano}]      ");
             }
@@ -181,7 +183,7 @@ namespace RPGConsole
                 Console.WriteLine();
                 Console.WriteLine("Pressione qualquer tecla para continuar ");
                 Console.ReadKey();
-            }                
+            }
             else
                 Thread.Sleep(300);
         }
@@ -268,7 +270,7 @@ namespace RPGConsole
                 Lore Inicio = new Lore();
                 Inicio.inicio();
             }
-                
+
 
         }
 

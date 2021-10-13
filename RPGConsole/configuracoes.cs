@@ -50,6 +50,17 @@ namespace RPGConsole
             return listaComandosValidosCombate;
         }
 
+        public static List<string> ComandosValidosSelecaoPersonagem()
+        {
+            List<string> listaComandosValidosCombate = new List<string>()
+            {
+                "1",
+                "2",
+                "3"
+            };
+            return listaComandosValidosCombate;
+        }
+
         public static void MontaPainelDialogos(string dialogo, string nome)
         {
             string[] paravras = dialogo.Split(' ');
@@ -62,6 +73,48 @@ namespace RPGConsole
             Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝");
             Console.WriteLine("Precione qualquer tecla para continuar");
             Console.ReadKey();
+        }
+
+        public static void MontaPainelDialogosComOpeçoesRespostas(List<string> opcoesRespostas, string nome, out string valorSelecionado)
+        {
+            string resposta;
+            valorSelecionado = string.Empty;
+            Console.Clear();
+            Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗");
+            MontaNome("Escolha sua Ação:" + nome);
+            Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║");
+            foreach (var opcao in opcoesRespostas)
+            {
+                string[] paravras = opcao.Split(' ');
+                MostraLinha(paravras);
+            }
+            Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine("Selecione uma das opções acima");
+            resposta = Console.ReadLine();
+            if (!VerificaOpcaoResposta(resposta, opcoesRespostas.Count))
+            {
+                MontaPainelDialogosComOpeçoesRespostas(opcoesRespostas, nome, out resposta);
+            }
+            else
+                valorSelecionado = resposta;
+
+            Console.Clear();
+        }
+
+        public static bool VerificaOpcaoResposta(string resposta, int totalRespostas)
+        {
+            try
+            {
+                if (Convert.ToInt32(resposta) <= totalRespostas)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
         public static void MostraLinha(string[] paravras)

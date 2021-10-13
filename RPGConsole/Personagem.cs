@@ -10,9 +10,15 @@ namespace RPGConsole
 {
     public class Personagem
     {
+        public enum Classes
+        {
+            Arqueiro = 1,
+            Mago = 2,
+            Guerreiro = 3
+        }
         public string nome;
         public int idade;
-        public string classe;
+        public Classes classe;
         public int força;
         public int inteligencia;
         public int vidaAtual;
@@ -58,15 +64,15 @@ namespace RPGConsole
                     Console.WriteLine($"     ╚═══════════════════════╝   ╚═══════════════════════╝    ╚═══════════════════════╝        ");
                     Console.WriteLine($"                                   Digite o Numero da sua Classe:                              ");
 
-                    jogador1.classe = Console.ReadLine();
-                    if (!Configuracoes.ComandosValidosCombate().Any(l => l == jogador1.classe))
+                    string selecao = Console.ReadLine();
+                    if (!Configuracoes.ComandosValidosSelecaoPersonagem().Any(l => l == selecao))
                         CriarPersonagem(jogador1);
+                    jogador1.classe = (Classes)Convert.ToInt32(selecao);
                     Itens arma = new Itens();
                     Itens armadura = new Itens();
                     switch (jogador1.classe)
                     {
-                        case "1": //Arqueiro
-                            jogador1.classe = "Arqueiro";
+                        case Classes.Arqueiro:
                             jogador1.força = 3;
                             jogador1.inteligencia = 2;
                             jogador1.vidaAtual = 15;
@@ -77,7 +83,7 @@ namespace RPGConsole
                             arma.nome = "Arco podre";
                             arma.dano = 1;
                             arma.equipado = true;
-                            jogador1.itensEquipadoArma = arma; 
+                            jogador1.itensEquipadoArma = arma;
                             armadura.nome = "Armadura podre";
                             armadura.armadura = 1;
                             armadura.equipado = true;
@@ -86,8 +92,7 @@ namespace RPGConsole
                             bag.Add(armadura);
                             break;
 
-                        case "2"://Mago
-                            jogador1.classe = "Mago";
+                        case Classes.Mago:
                             jogador1.força = 2;
                             jogador1.inteligencia = 4;
                             jogador1.vidaAtual = 10;
@@ -106,8 +111,7 @@ namespace RPGConsole
                             bag.Add(arma);
                             bag.Add(armadura);
                             break;
-                        case "3"://Guerreiro
-                            jogador1.classe = "Guerreiro";
+                        case Classes.Guerreiro:
                             jogador1.força = 5;
                             jogador1.inteligencia = 1;
                             jogador1.vidaAtual = 20;
@@ -137,7 +141,7 @@ namespace RPGConsole
                 CriarPersonagem(jogador1);
             }
         }
-        
+
         public void MostraDadosdoJogador(Personagem jogador1)
         {
             Console.Clear();
@@ -230,7 +234,7 @@ namespace RPGConsole
                 Console.WriteLine("Você não possui esse tipo de poção");
             }
             else
-            { 
+            {
                 double recuperacao = 0;
                 switch (tipoPocao.nome)
                 {
@@ -257,7 +261,7 @@ namespace RPGConsole
                 }
                 bag.Remove(tipoPocao);
                 Console.WriteLine("Você bebeu a " + tipoPocao.nome);
-            }                  
+            }
         }
     }
 }
