@@ -56,7 +56,7 @@ namespace RPGConsole
         {
             if (!Configuracoes.ComandosValidosCombate().Any(l => l == resposta))
                 return;
-            MontaStatusVIdaInicial(jogador1, inimigo);
+            MontaStatusVidaInicial(jogador1, inimigo);
             fimDaBatalha = false;
             while (!fimDaBatalha)
             {
@@ -133,12 +133,6 @@ namespace RPGConsole
             if (jogador1.xp >= jogador1.xpProxNivel)
             {
                 Console.Clear();
-                jogador1.nivel = jogador1.nivel + 1;
-                jogador1.xpProxNivel = jogador1.xpProxNivel * 2;
-                jogador1.vidaTotal = jogador1.vidaTotal + jogador1.vidaTotal;
-                jogador1.vidaAtual = jogador1.vidaTotal;
-                jogador1.força = jogador1.força + jogador1.força;
-                jogador1.inteligencia = jogador1.inteligencia + jogador1.inteligencia;
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("    Parabéns                             ");
                 Console.WriteLine("                [       LEVEL UP         ");
@@ -147,12 +141,18 @@ namespace RPGConsole
                 Console.WriteLine("                                         ");
                 Console.WriteLine($"Você subiu para o Nivel: [{jogador1.nivel}]");
                 Console.WriteLine("Atributos:");
-                Console.WriteLine($"Força: [{jogador1.força}]");
-                Console.WriteLine($"Inteligencia: [{jogador1.inteligencia}]");
-                Console.WriteLine($"Vida: [{jogador1.vidaAtual}]");
+                Console.WriteLine($"Força: [{jogador1.força}] + {jogador1.força}");
+                Console.WriteLine($"Inteligencia: [{jogador1.inteligencia}] + {jogador1.inteligencia}");
+                Console.WriteLine($"Vida: [{jogador1.vidaTotal}] + {jogador1.vidaTotal}");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Pressione qualquer tecla para continuar ");
-                Console.ReadKey();
+                jogador1.nivel = jogador1.nivel + 1;
+                jogador1.xpProxNivel = jogador1.xpProxNivel * 2;
+                jogador1.vidaTotal = jogador1.vidaTotal + jogador1.vidaTotal;
+                jogador1.vidaAtual = jogador1.vidaTotal;
+                jogador1.força = jogador1.força + jogador1.força;
+                jogador1.inteligencia = jogador1.inteligencia + jogador1.inteligencia;
+                
             }
         }
 
@@ -207,6 +207,30 @@ namespace RPGConsole
             return campoVida;
         }
 
+        public string atualizaBarraXP(int xpProximoNivel, int xpTotal)
+        {
+            string quadrado = "█";
+            string espaco = "░";
+            string campoXP = "";
+            int totalQuadrados = 30;
+            int diferenca = xpProximoNivel - xpTotal;
+            int inicioBarra = xpProximoNivel == 100 ? 0 : xpProximoNivel / 2;
+            int totalBarra = xpProximoNivel - inicioBarra;
+            int xpGanhoNoNivel = xpTotal - inicioBarra;
+
+            int quadradosFaltantes = totalQuadrados - Convert.ToInt32((totalBarra - xpGanhoNoNivel) / (totalBarra / (decimal)totalQuadrados));
+
+            for (int i = 0; i < totalQuadrados; i++)
+            {
+                if (i <= quadradosFaltantes)
+                    campoXP += quadrado;
+                else
+                    campoXP += espaco;
+            }
+
+            return campoXP;
+        }
+
         public void InicioBatalha(Personagem jogador1, Inimigos inimigo)
         {
             Console.Clear();
@@ -219,7 +243,7 @@ namespace RPGConsole
             Batalhar(jogador1, inimigo, resposta);
         }
 
-        public void MontaStatusVIdaInicial(Personagem jogador1, Inimigos inimigo)
+        public void MontaStatusVidaInicial(Personagem jogador1, Inimigos inimigo)
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
@@ -234,7 +258,10 @@ namespace RPGConsole
         public void MontaStatusBatalha(Personagem jogador1, Inimigos inimigo)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"               [{jogador1.nome}] Nivel: [{jogador1.nivel}]  -  EXP: [{jogador1.xp}]   ║  Sua Vida: [{jogador1.vidaAtual}]  [{atualizaBarraVida(jogador1.vidaTotal, jogador1.vidaAtual)}] ");
+            Console.WriteLine($"               [{jogador1.nome}]   ║  Sua Vida: [{jogador1.vidaAtual}]  [{atualizaBarraVida(jogador1.vidaTotal, jogador1.vidaAtual)}] ");
+            Console.WriteLine();
+            Console.WriteLine($"                                Nivel: [{jogador1.nivel}] ");
+            Console.WriteLine($"       XP Atual: [{jogador1.xp}] {atualizaBarraXP(jogador1.xpProxNivel, jogador1.xp)} Proximo Nível: {jogador1.xpProxNivel} ");
             Console.WriteLine();
             Console.WriteLine($"               Você encontrou um [{inimigo.nome}]                       ");
             Console.WriteLine();

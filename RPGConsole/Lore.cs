@@ -11,7 +11,6 @@ namespace RPGConsole
         public string seleção;
         public bool selecaoValida;
         static string resposta { get; set; }
-        //public string texto;
 
         public void inicio()
         {
