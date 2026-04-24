@@ -65,14 +65,29 @@ namespace RPGConsole
         {
             string[] paravras = dialogo.Split(' ');
 
-            Console.Clear();
-            Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗");
-            MontaNome(nome);
-            Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║");
-            MostraLinha(paravras);
-            Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝");
-            Console.WriteLine("Precione qualquer tecla para continuar");
-            Console.ReadKey();
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine($"╔═══════════════════════════════════════════════════════════════════╗");
+                MontaNome(nome);
+                Console.WriteLine($"║═══════════════════════════════════════════════════════════════════║");
+                MostraLinha(paravras);
+                Console.WriteLine($"╚═══════════════════════════════════════════════════════════════════╝");
+                Console.WriteLine("Pressione qualquer tecla para continuar, M para mapa ou I para inventario");
+                ConsoleKeyInfo tecla = Console.ReadKey(true);
+                if (tecla.Key == ConsoleKey.M)
+                {
+                    MapaConsole.Abrir(SessaoJogo.JogadorAtual);
+                    continue;
+                }
+                if (tecla.Key == ConsoleKey.I)
+                {
+                    InventarioConsole.Abrir(SessaoJogo.JogadorAtual);
+                    continue;
+                }
+
+                break;
+            }
         }
 
         public static void MontaPainelDialogosComOpeçoesRespostas(List<string> opcoesRespostas, string nome, out string valorSelecionado)

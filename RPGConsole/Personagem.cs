@@ -30,9 +30,11 @@ namespace RPGConsole
         public int xpProxNivel = 100;
         public int nivel;
         public DateTime dataCriacao;
+        public int parteAtual = 1;
+        public string localAtual = "TAVERNA";
         public int gold;
         public int silver;
-        List<Itens> bag = new List<Itens>();
+        public List<Itens> bag = new List<Itens>();
         public Itens itensEquipadoArma;
         public Itens itensEquipadoAmadura;
 
@@ -80,6 +82,8 @@ namespace RPGConsole
                             jogador1.nivel = 1;
                             jogador1.xp = 0;
                             jogador1.dataCriacao = DateTime.Now;
+                            jogador1.parteAtual = 1;
+                            jogador1.localAtual = "TAVERNA";
                             arma.nome = "Arco podre";
                             arma.dano = 1;
                             arma.equipado = true;
@@ -100,6 +104,8 @@ namespace RPGConsole
                             jogador1.nivel = 1;
                             jogador1.xp = 0;
                             jogador1.dataCriacao = DateTime.Now;
+                            jogador1.parteAtual = 1;
+                            jogador1.localAtual = "TAVERNA";
                             arma.nome = "varinha podre";
                             arma.dano = 1;
                             arma.equipado = true;
@@ -119,6 +125,8 @@ namespace RPGConsole
                             jogador1.nivel = 1;
                             jogador1.xp = 0;
                             jogador1.dataCriacao = DateTime.Now;
+                            jogador1.parteAtual = 1;
+                            jogador1.localAtual = "TAVERNA";
                             arma.nome = "Espada podre";
                             arma.dano = 1;
                             arma.equipado = true;
@@ -131,7 +139,13 @@ namespace RPGConsole
                             bag.Add(armadura);
                             break;
                     }
+                    Itens espadaMelhor = new Itens();
+                    espadaMelhor.nome = "Espada de Aco";
+                    espadaMelhor.dano = 4;
+                    espadaMelhor.equipado = false;
+                    bag.Add(espadaMelhor);
                     MostraDadosdoJogador(jogador1);
+                    PersonagemStorage.Salvar(jogador1);
                     resposta = "sim";
                 }
             }
@@ -263,9 +277,84 @@ namespace RPGConsole
                 Console.WriteLine("Você bebeu a " + tipoPocao.nome);
             }
         }
+
+        public bool EquiparItemDaBag(Personagem jogador1, int indiceBag, out string mensagem)
+        {
+            mensagem = string.Empty;
+            if (jogador1 == null)
+            {
+                mensagem = "Personagem invalido.";
+                return false;
+            }
+
+            if (indiceBag < 0 || indiceBag >= jogador1.bag.Count)
+            {
+                mensagem = "Indice de item invalido.";
+                return false;
+            }
+
+            Itens itemSelecionado = jogador1.bag[indiceBag];
+            if (itemSelecionado == null)
+            {
+                mensagem = "Item invalido.";
+                return false;
+            }
+
+            bool eArma = itemSelecionado.dano > 0;
+            bool eArmadura = itemSelecionado.armadura > 0;
+
+            if (!eArma && !eArmadura)
+            {
+                mensagem = "Esse item nao pode ser equipado.";
+                return false;
+            }
+
+            if (eArma)
+            {
+                if (object.ReferenceEquals(itemSelecionado, jogador1.itensEquipadoArma))
+                {
+                    mensagem = "Essa arma ja esta equipada.";
+                    return false;
+                }
+
+                jogador1.bag.RemoveAt(indiceBag);
+                Itens armaAntiga = jogador1.itensEquipadoArma;
+                if (armaAntiga != null)
+                {
+                    armaAntiga.equipado = false;
+                    if (!jogador1.bag.Contains(armaAntiga))
+                    {
+                        jogador1.bag.Add(armaAntiga);
+                    }
+                }
+
+                itemSelecionado.equipado = true;
+                jogador1.itensEquipadoArma = itemSelecionado;
+                mensagem = $"Arma equipada: {itemSelecionado.nome}";
+                return true;
+            }
+
+            if (object.ReferenceEquals(itemSelecionado, jogador1.itensEquipadoAmadura))
+            {
+                mensagem = "Essa armadura ja esta equipada.";
+                return false;
+            }
+
+            jogador1.bag.RemoveAt(indiceBag);
+            Itens armaduraAntiga = jogador1.itensEquipadoAmadura;
+            if (armaduraAntiga != null)
+            {
+                armaduraAntiga.equipado = false;
+                if (!jogador1.bag.Contains(armaduraAntiga))
+                {
+                    jogador1.bag.Add(armaduraAntiga);
+                }
+            }
+
+            itemSelecionado.equipado = true;
+            jogador1.itensEquipadoAmadura = itemSelecionado;
+            mensagem = $"Armadura equipada: {itemSelecionado.nome}";
+            return true;
+        }
     }
 }
-
-
-
-

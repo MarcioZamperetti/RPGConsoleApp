@@ -1,0 +1,113 @@
+[INICIO_MENU]
+Mundo de Mystara
+
+[SOBRE]
+Ola pessoas, 0/ Esse projeto teve inicio em 2017 quando comecei a trabalhar como desenvolvedor, a ideia era aprender c# atraves do desenvolvimento de um jogo de RPG todo textual. Foi a maneira mais legal que eu encontrei para aplicar os conhecimentos adquiridos nas aulas. Encorajo a todos que "brinquem" de fazer um jogo tambem, ou se quiser contribuir nesse projeto so dar um pull request =D.
+
+[PARTE1_NARRADOR_1]
+Era tarde da noite e voce estava em uma taverna bebendo cerveja voce acabara de voltar de um trabalho, escoltar Sir Benish ate as vilas mais distantes do castelo para recolher os impostos da colheita de verao. Um trabalho relativamente simples e que lhe rendeu um pagamento de 5 moedas de ouro, que voce gastara na taverna com cerveja e gorjetas para os bardos e dancarinas.
+
+[PARTE1_NARRADOR_2]
+Entre uma cerveja e outra, entra uma mulher na taverna. Ela estava vestindo um gibao de couro fervido, uma roupa nada usual para uma mulher. Ela entra na caverna com um ar de espanto e medo, e se dirige ate o balcao, tira de uma pequena bolsa de couro que carregava consigo um pergaminho e coloca na bancada.
+
+[PARTE1_NARRADOR_3]
+Mesmo sem ouvir a conversa, voce nota que ela esta tentando vender o pergaminho ao taverneiro. O taverneiro faz um sinal que nao quer comprar nada e a manda embora com um gesto, entao a mulher olha em volta e se dirige ate sua mesa.
+
+[PARTE1_MULHER_1]
+Boa noite senhor, notei pelas suas vestimentas que es um aventureiro, estou vendendo este pergaminho que leva a um tesouro ha muito esquecido, voce gostaria de compra-lo? Estou vendendo por 50 moedas de ouro.
+
+[PARTE1_RESP1_MULHER]
+Hmmm, o que podemos fazer e o seguinte, voce me leva ate la e dividimos o valor do tesouro.
+
+[PARTE1_RESP1_JOGADOR]
+Claro, vamos nessa.
+
+[PARTE1_RESP2_MULHER_1]
+Posso saber o motivo?
+
+[PARTE1_RESP2_JOGADOR_1]
+Nao tenho dinheiro.
+
+[PARTE1_RESP2_MULHER_2]
+Hmmm, o que podemos fazer e o seguinte, voce me leva ate la e dividimos o valor do tesouro.
+
+[PARTE1_RESP2_JOGADOR_2]
+Claro, vamos nessa.
+
+[PARTE1_RESP3_MULHER]
+Ei, isso e meu.
+
+[PARTE1_RESP3_NARRADOR]
+A mulher comeca a falar palavras incompreensiveis, seus olhos ficam escuros, e uma aura negra fica em sua volta.
+
+[PARTE2_NARRADOR_1]
+Depois de escapar da confusao na taverna, voce segue por uma estrada antiga em direcao ao leste.
+
+[PARTE2_NARRADOR_2]
+O vento fica mais frio e as arvores formam um corredor escuro, como se algo observasse cada passo seu.
+
+[PARTE2_NARRADOR_3]
+No chao, voce encontra uma mochila rasgada, algumas moedas espalhadas e marcas de mordida em couro endurecido.
+
+[PARTE2_NARRADOR_4]
+Um guincho agudo ecoa perto de um tronco caido. Olhos pequenos brilham no escuro e um rato enorme avanca na sua direcao.
+
+[PARTE2_NARRADOR_5]
+Prepare-se. Essa luta parece simples, mas um erro aqui pode custar caro.
+
+[PARTE2_NARRADOR_6]
+Com o rato derrotado, voce limpa a lamina no manto e encontra uma escadaria de pedra que leva para as ruinas.
+
+[PARTE3_NARRADOR_1]
+As ruinas surgem diante de voce como os ossos de um gigante. Colunas quebradas, estatuas sem rosto e um silencio pesado.
+
+[PARTE3_NARRADOR_2]
+No salao central, um altar antigo pulsa com luz azul. Correntes pendem do teto e ossos estalam no chao.
+
+[PARTE3_NARRADOR_3]
+Um esqueleto armado se ergue entre os escombros e avanca, protegendo um emblema marcado com o simbolo do eclipse.
+
+[PARTE3_NARRADOR_4]
+Com o guardiao derrotado, voce toma o emblema e abre uma passagem para as catacumbas abaixo das ruinas.
+
+[PARTE4_NARRADOR_1]
+As catacumbas cheiram a mofo e ferro velho. Tochas antigas acendem sozinhas quando voce pisa no corredor.
+
+[PARTE4_NARRADOR_2]
+Uma horda de ratos sai das rachaduras das paredes, faminta e agressiva, cercando suas botas.
+
+[PARTE4_NARRADOR_3]
+Depois da emboscada, voce encontra um elevador de corrente que sobe direto para uma torre esquecida.
+
+[PARTE5_NARRADOR_1]
+A torre range com o vento noturno. Em cada andar ha livros queimados, frascos vazios e mapas de guerra.
+
+[PARTE5_NARRADOR_2]
+No observatorio, runas no chao brilham e um soldado osseo guarda um astrolabio de prata.
+
+[PARTE5_NARRADOR_3]
+Quando o combate comeca, relampagos atravessam as janelas quebradas e iluminam a cidade distante.
+
+[PARTE5_NARRADOR_4]
+Com a vitoria, voce encontra coordenadas para um encontro secreto no porto antes do amanhecer.
+
+[PARTE6_NARRADOR_1]
+No porto, a neblina cobre os navios e o som de correntes ecoa por entre cais vazios.
+
+[PARTE6_NARRADOR_2]
+Mercenarios e criaturas das sombras emboscam sua trilha, tentando recuperar o emblema do eclipse.
+
+[PARTE6_NARRADOR_3]
+Apos sobreviver a emboscada, um velho marinheiro revela uma rota escondida para a cidadela de Mystara.
+
+[PARTE7_NARRADOR_1]
+A cidadela esta em estado de guerra. Sinos tocam sem parar e guardas recuam para o patio interno.
+
+[PARTE7_NARRADOR_2]
+No salao principal, um campeao osseo guarda o trono vazio, esperando o portador do emblema.
+
+[PARTE7_NARRADOR_3]
+Voce avanca para a ultima batalha desta campanha, com toda a cidade observando em silencio.
+
+[PARTE7_NARRADOR_4]
+Com o inimigo derrotado, o povo de Mystara volta a respirar. O capitulo foi concluido e o jogo foi salvo.

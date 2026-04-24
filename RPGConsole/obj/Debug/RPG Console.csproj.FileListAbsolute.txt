@@ -32,3 +32,11 @@ C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\obj\Debug\RPG Console.pdb
 C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\bin\Debug\RPG Console.exe.config
 C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\bin\Debug\RPG Console.exe
 C:\Users\DOM\source\repos\RPGConsoleApp\RPGConsole\bin\Debug\RPG Console.pdb
+C:\Marcio\Desktop\RPGConsoleApp-master\RPGConsole\bin\Debug\lore.txt
+C:\Marcio\Desktop\RPGConsoleApp-master\RPGConsole\bin\Debug\RPG Console.exe.config
+C:\Marcio\Desktop\RPGConsoleApp-master\RPGConsole\bin\Debug\RPG Console.exe
+C:\Marcio\Desktop\RPGConsoleApp-master\RPGConsole\bin\Debug\RPG Console.pdb
+C:\Marcio\Desktop\RPGConsoleApp-master\RPGConsole\obj\Debug\RPG Console.csproj.AssemblyReference.cache
+C:\Marcio\Desktop\RPGConsoleApp-master\RPGConsole\obj\Debug\RPG Console.csproj.CoreCompileInputs.cache
+C:\Marcio\Desktop\RPGConsoleApp-master\RPGConsole\obj\Debug\RPG Console.exe
+C:\Marcio\Desktop\RPGConsoleApp-master\RPGConsole\obj\Debug\RPG Console.pdb
